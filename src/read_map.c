@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 15:25:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/22 06:00:54 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/08/22 06:26:42 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/08/22 06:41:13 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d.h"
 
@@ -80,5 +81,6 @@ char	**read_map(char *file_name)
 	}
 	map[i] = NULL;
 	close(fd);
+	check_map_is_empty(map);
 	return (map);
 }

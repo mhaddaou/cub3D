@@ -6,11 +6,11 @@
 #    By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/22 06:10:23 by mhaddaou          #+#    #+#              #
-#    Updated: 2022/08/22 06:15:35 by mhaddaou         ###   ########.fr        #
+#    Updated: 2022/08/22 06:53:42 by mhaddaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/check_extension.c src/cub3d.c src/ft_free.c src/ft_strerror.c src/ft_strjoin.c src/gnl.c src/read_map.c src/util.c
+SRC = src/check_extension.c src/cub3d.c src/ft_free.c src/ft_strerror.c src/ft_strjoin.c src/gnl.c src/read_map.c src/util.c src/ft_check.c src/initializeWindow.c
 OBJ = ${SRC:.c=.o}
 
 CC = gcc

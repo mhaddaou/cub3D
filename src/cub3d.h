@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/22 06:05:38 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:43:08 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,30 @@
 # include <fcntl.h>
 # define BUFFER_SIZE (10)
 
+#define WINDOW_WIDTH (1700)
+#define WINDOW_HEIGHT (2550)
+
+#define MLX_ERROR 1
+
+#define RED_PIXEL 0xFF0000
+#define GREEN_PIXEL 0xFF00
+#define WHITE_PIXEL 0xFFFFFF
+
+typedef struct player
+{
+	int playerX;
+	int playerY;
+}	t_player;
+
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct s_cub
 {
 	char	**map;
@@ -29,7 +53,10 @@ typedef struct s_cub
 	int		p_y;
 	void	*mlx;
 	void	*win;
+	void	*img;
 	int		img_width;
+	t_player player;
+	t_data img_mlx;
 	int		img_height;
 }	t_cub;
 
@@ -46,5 +73,7 @@ char    *ft_strjoin(char const *s1, char const *s2);
 void ft_putstr_fd(char *str, int fd);
 char *gnl(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void    check_map_is_empty(char **map);
+void    initializeWindow(t_cub *cub);
 
 #endif
