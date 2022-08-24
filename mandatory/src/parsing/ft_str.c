@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 05:44:27 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/23 12:56:16 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/24 15:17:46 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ char    *ft_strjoin(char const *s1, char const *s2)
 
 void ft_strerror(int err)
 {
-    if (err == 1)
-        ft_putstr_fd("Error\nThe extension of the map is not correct.\n", 2);
-    if (err == 2)
-        ft_putstr_fd("Error\nThe Map is empty.\n", 2);
-
-    exit(EXIT_FAILURE);
+        if (err == 1)
+                ft_putstr_fd("Error\nThe extension of the map is not correct.\n", 2);
+        if (err == 2)
+                ft_putstr_fd("Error\nThe Map is empty.\n", 2);
+        if (err == 3)
+                ft_putstr_fd("Error\nThe window can't be open", 2);    
+        exit(EXIT_FAILURE);
 }

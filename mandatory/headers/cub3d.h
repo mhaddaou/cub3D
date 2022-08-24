@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/23 12:43:08 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:29:58 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,24 @@
 # include <mlx.h>
 # include <fcntl.h>
 # define BUFFER_SIZE (10)
+#define  PI (3.14159265)
+#define TWO_PI (6.28318530)
+#define ROWS (13)
+#define COL (20)
+#define FOV_ANGLE (60 * (PI / 180))
 
-#define WINDOW_WIDTH (1700)
-#define WINDOW_HEIGHT (2550)
+
+#define WINDOW_WIDTH (10)
+#define WINDOW_HEIGHT (10)
 
 #define MLX_ERROR 1
 
 #define RED_PIXEL 0xFF0000
 #define GREEN_PIXEL 0xFF00
+#define BLACK_PIXEL 0x041014
 #define WHITE_PIXEL 0xFFFFFF
 
-typedef struct player
-{
-	int playerX;
-	int playerY;
-}	t_player;
+
 
 
 typedef struct	s_data {
@@ -45,18 +48,34 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+
+typedef struct	player
+{
+	float x;
+	float y;
+	float width;
+	float height;
+	int turnDirection;  // -1 turn left , + 1 turn right
+	int walkDirection; // -1 walk back , + 1 walk front
+	float rotationAngle;
+	float walkSpeed;
+	float turnSpeed;
+} t_player;
 typedef struct s_cub
 {
 	char	**map;
 	int		map_height;
-	int		p_x;
-	int		p_y;
+	int 	map_width;
+	int i;
+	int y;
+	int j;
+	int x;
+	
 	void	*mlx;
 	void	*win;
-	void	*img;
 	int		img_width;
 	t_player player;
-	t_data img_mlx;
+	t_data data;
 	int		img_height;
 }	t_cub;
 
@@ -74,6 +93,6 @@ void ft_putstr_fd(char *str, int fd);
 char *gnl(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void    check_map_is_empty(char **map);
-void    initializeWindow(t_cub *cub);
+void    initializeWindow(t_cub cub);
 
 #endif

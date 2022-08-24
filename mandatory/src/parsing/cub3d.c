@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 06:27:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/23 12:56:07 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/23 16:05:29 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	main(int argc, char *argv[])
 		file_name = argv[1];
 		cub.map = read_map(file_name);
 		
-		int i = 0;
-		while (cub.map[i])
-		{
-			printf("%s\n", cub.map[i]);
-			i++;
-		}
-		initializeWindow(&cub);
+		// int i = 0;
+		// while (cub.map[i])
+		// {
+		// 	printf("%s\n", cub.map[i]);
+		// 	i++;
+		// }
+		initializeWindow(cub);
 		// cub.mlx = mlx_init();
 		// cub.win = mlx_new_window(cub.mlx, 800, 600, "hello");
 		// mlx_loop(cub.mlx);
