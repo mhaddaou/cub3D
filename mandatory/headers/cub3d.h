@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 17:19:20 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:37:50 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ int ground(t_cub *all);
 void put_player(t_cub *cub);
 void    setup(t_cub *cub);
 void printAllc(t_cub *cub);
-
+int checkWalls(t_cub *cub);
 #endif

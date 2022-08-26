@@ -6,39 +6,57 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:19:35 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 17:22:33 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:52:39 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-void get_value(t_cub *cub)
-{
-    cub->player.x += 3;
-}
 
 void moveRight (t_cub *cub)
 {
     
     cub->player.x += 0.2;
-    // mlx_clear_window(cub->mlx, cub->win);
-    // mlx_destroy_image(cub->mlx, cub->data.img);
-    printAllc(cub);
+    if (checkWalls(cub) == EXIT_FAILURE)
+    {
+        cub->player.x -= 0.2;   
+        return ;
+    }
+    else
+        printAllc(cub);
 }
 void moveLeft (t_cub *cub)
 {
     cub->player.x -= 0.2;
-    printAll(cub);
+    if (checkWalls(cub) == EXIT_FAILURE)
+    {
+        cub->player.x += 0.2;   
+       return ;
+    }
+    else
+        printAll(cub);
 }
 void moveUp (t_cub *cub)
 {
     cub->player.y -= 0.2;
-    printAll(cub);
+    if (checkWalls(cub) == EXIT_FAILURE)
+    {
+       cub->player.x += 0.2;
+       return ;
+    }
+    else
+        printAll(cub);
 }
 void moveDown (t_cub *cub)
 {
     cub->player.y += 0.2;
-    printAll(cub);
+    if (checkWalls(cub) == EXIT_FAILURE)
+    {
+        cub->player.y -= 0.2;
+        return ;
+    }
+    else
+        printAll(cub);
 }
 
 int key_hook(int key, t_cub *cub)

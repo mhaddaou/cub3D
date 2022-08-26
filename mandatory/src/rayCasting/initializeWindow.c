@@ -273,7 +273,7 @@ void printAllc(t_cub *cub)
 {
      ground(cub);
     check_map(cub);
-    // getPosition(cub);
+    getPosition(cub);
     setup(cub);
     put_player(cub);
     DDA(cub, cub->player.x * 30, cub->player.y * 30, (cub->player.x + 1) * 30, (cub->player.y + 1) * 30);
