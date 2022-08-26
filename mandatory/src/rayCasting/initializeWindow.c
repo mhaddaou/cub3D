@@ -133,22 +133,22 @@ void check_and_print(t_cub cub, int cb, int cw)
     
 // }
 
-int ground(t_cub all)
+int ground(t_cub *all)
 {
     // background(all, GREEN_PIXEL);
     // check_and_print(all, BLACK_PIXEL, WHITE_PIXEL);
     int i = 0;
     int j;
-    while (i < all.map_height * 30)
+    while (i < all->map_height * 30)
     {
         j = 0;
-        while (j < all.map_width * 30)
+        while (j < all->map_width * 30)
         {
-            my_mlx_pixel_put(&all.data, j,i, GREEN_PIXEL);
+            my_mlx_pixel_put(&all->data, j,i, GREEN_PIXEL);
             j++;
         } 
         i++;
-        mlx_put_image_to_window(all.mlx, all.win, all.data.img,0,0);
+        // mlx_put_image_to_window(all->mlx, all->win, all->data.img,0,0);
         // mlx_clear_window(all.mlx, all.win);   
     }
     // mlx_clear_window(all.mlx,all.win);
@@ -178,70 +178,66 @@ void    setup(t_cub *cub)
     cub->player.walkSpeed = 100;
     cub->player.turnSpeed = 45 * (PI / 180); 
 }
-void renderMap(t_cub cub, int x, int y, int color)
+void renderMap(t_cub *cub, int x, int y, int color)
 {
     int x1;
-    x1 = cub.y;
+    x1 = cub->y;
     
-    while (cub.x < x)
+    while (cub->x < x)
     {
-        cub.y = x1;
-        while (cub.y < y )
+        cub->y = x1;
+        while (cub->y < y )
         {
-            my_mlx_pixel_put(&cub.data, cub.y,cub.x, color);
-            cub.y++;
+            my_mlx_pixel_put(&cub->data, cub->y,cub->x, color);
+            cub->y++;
         }
-        cub.x++;
+        cub->x++;
     }
     
-    mlx_put_image_to_window(cub.mlx, cub.win, cub.data.img, 0, 0);
+    // mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
     // printf("%d\n", cub.map_width);
     // printf("kdjf\n");
     // mlx_clear_window(cub.mlx, cub.win);
     
 }
-void giVal(t_cub cub, int i, int j, int color, int p)
+void giVal(t_cub *cub, int i, int j, int color, int p)
 {
     int x, y;
     if (p == 0)
     {
-        cub.x = i * 30;
-        cub.y = j * 30;
-        x = cub.x + 30;
-        y = cub.y + 30;    
+        cub->x = i * 30;
+        cub->y = j * 30;
+        x = cub->x + 30;
+        y = cub->y + 30;    
     }
     renderMap(cub, x , y , color);
     
 }
-void printPlayer( t_cub cub)
+
+void check_map(t_cub *cub)
 {
-    int x = cub.player.x;
-}
-void check_map(t_cub cub)
-{
-    printPlayer(cub);
     int i;
     int j;
 
     i = 0;
-    while (cub.map[i])
+    while (cub->map[i])
     {
         j = 0;
-        while (cub.map[i][j])
+        while (cub->map[i][j])
         {
-            if (cub.map[i][j] == '1')
+            if (cub->map[i][j] == '1')
                 giVal(cub, i, j, WHITE_PIXEL, 0);
-            if (cub.map[i][j] == '0')
+            if (cub->map[i][j] == '0')
                 giVal(cub, i, j, GREEN_PIXEL, 0);
             j++;
         }
         i++;
     }    
 }
-int len_height(t_cub cub)
+int len_height(t_cub *cub)
 {
     int i = 0;
-    while (cub.map[i])
+    while (cub->map[i])
         i++;
     return (i);
 }
@@ -271,35 +267,51 @@ void put_player(t_cub *cub)
         }
         y++;
     }
-    mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
+    // mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
+}
+void printAllc(t_cub *cub)
+{
+     ground(cub);
+    check_map(cub);
+    // getPosition(cub);
+    setup(cub);
+    put_player(cub);
+    DDA(cub, cub->player.x * 30, cub->player.y * 30, (cub->player.x + 1) * 30, (cub->player.y + 1) * 30);
+
+}
+void printAll(t_cub *cub)
+{
+    
+    ground(cub);
+    check_map(cub);
+    getPosition(cub);
+    setup(cub);
+    put_player(cub);
+    DDA(cub, cub->player.x * 30, cub->player.y * 30, (cub->player.x + 1) * 30, (cub->player.y + 1) * 30);
 }
 
-void    initializeWindow(t_cub cub)
+void    initializeWindow(t_cub *cub)
 {
     // renderMap()
     
-    cub.mlx = mlx_init();
+    cub->mlx = mlx_init();
     
-    cub.win = mlx_new_window(cub.mlx, 1500, 1000 , "cub");
-    if (!cub.win)
+    cub->win = mlx_new_window(cub->mlx, 1500, 1000 , "cub");
+    if (!cub->win)
         ft_strerror(3);
-    cub.data.img = mlx_new_image(cub.mlx, 1500, 1000);
-    cub.data.addr = mlx_get_data_addr(cub.data.img,&cub.data.bits_per_pixel, &cub.data.line_length, &cub.data.endian);
-    cub.map_width = (int)ft_strlen(cub.map[0]);
-    cub.map_height = len_height(cub);
-    ground(cub);
-    check_map(cub);
-    getPosition(&cub);
-    // printf("%f\n", cub.player.x);
-    // printf("%f\n", cub.player.y);
-    setup(&cub);
-    DDA(cub, cub.player.x * 30, cub.player.y * 30, (cub.player.x + 1) * 30, (cub.player.y + 1) * 30);
-
+    cub->data.img = mlx_new_image(cub->mlx, 1500, 1000);
+    cub->data.addr = mlx_get_data_addr(cub->data.img,&cub->data.bits_per_pixel, &cub->data.line_length, &cub->data.endian);
+    cub->map_width = (int)ft_strlen(cub->map[0]);
+    cub->map_height = len_height(cub);
+    printAll(cub);
+    mlx_hook(cub->win, 2, 0, key_hook, cub);
+    // mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
+    
     // ddaAlgo(cub, 30, 30, 3 * 30, 3 * 30);
     
-    put_player(&cub);
     // ground(cub);
     // mlx_loop_hook(cub.mlx, &ground, &cub);
     
-    mlx_loop(cub.mlx);
+    mlx_loop(cub->mlx);
+    mlx_destroy_image(cub->mlx, cub->data.img);
 }

@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 08:31:22 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:19:20 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 # define GREEN_PIXEL 0xFF00
 # define BLACK_PIXEL 0x041014
 # define WHITE_PIXEL 0xFFFFFF
+# define KEY_RIGHT (2)
+# define KEY_LEFT (0)
+# define KEY_UP (13)
+# define KEY_DOWN (1) (
 
 
 
@@ -93,12 +97,19 @@ void ft_putstr_fd(char *str, int fd);
 char *gnl(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void    check_map_is_empty(char **map);
-void    initializeWindow(t_cub cub);
+void    initializeWindow(t_cub *cub);
 void getPosition(t_cub *cub);
 double deg2rad(double deg);
 double rad2deg(double rad);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void ddaAlgo(t_cub cub, float x1, float y1, int x2, int y2);
-void DDA(t_cub cub, int X0, int Y0, int X1, int Y1);
+void DDA(t_cub *cub, int X0, int Y0, int X1, int Y1);
+int key_hook(int key, t_cub *cub);
+void printAll(t_cub *cub);
+void check_map(t_cub *cub);
+int ground(t_cub *all);
+void put_player(t_cub *cub);
+void    setup(t_cub *cub);
+void printAllc(t_cub *cub);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 06:27:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/23 16:05:29 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:56:07 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 		// 	printf("%s\n", cub.map[i]);
 		// 	i++;
 		// }
-		initializeWindow(cub);
+		initializeWindow(&cub);
 		// cub.mlx = mlx_init();
 		// cub.win = mlx_new_window(cub.mlx, 800, 600, "hello");
 		// mlx_loop(cub.mlx);

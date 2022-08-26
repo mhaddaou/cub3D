@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:31:39 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 10:20:46 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:08:49 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // }
 
 //DDA Function for line generation
-void DDA(t_cub cub, int X0, int Y0, int X1, int Y1)
+void DDA(t_cub *cub, int X0, int Y0, int X1, int Y1)
 {
     // calculate dx & dy
     int dx = X1 - X0;
@@ -36,11 +36,11 @@ void DDA(t_cub cub, int X0, int Y0, int X1, int Y1)
     float Y = Y0;
     for (int i = 0; i <= steps; i++)
     {
-        my_mlx_pixel_put(&cub.data, X, Y, RED_PIXEL);  // put pixel at (X,Y)
+        my_mlx_pixel_put(&cub->data, X, Y, RED_PIXEL);  // put pixel at (X,Y)
         X += Xinc;           // increment in x at each step
         Y += Yinc;           // increment in y at each step
         // usleep(100);          // for visualization of line-
                              // generation step by step
     }
-    mlx_put_image_to_window(cub.mlx, cub.win, cub.data.img, 0, 0);
+    mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
 }
