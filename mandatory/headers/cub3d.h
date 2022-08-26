@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/24 16:29:58 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/25 14:45:06 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,21 @@
 # include <string.h>
 # include <mlx.h>
 # include <fcntl.h>
+# include <math.h>
+
 # define BUFFER_SIZE (10)
-#define  PI (3.14159265)
-#define TWO_PI (6.28318530)
-#define ROWS (13)
-#define COL (20)
-#define FOV_ANGLE (60 * (PI / 180))
-
-
-#define WINDOW_WIDTH (10)
-#define WINDOW_HEIGHT (10)
-
-#define MLX_ERROR 1
-
-#define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0xFF00
-#define BLACK_PIXEL 0x041014
-#define WHITE_PIXEL 0xFFFFFF
+# define  PI (3.14159265)
+# define TWO_PI (6.28318530)
+# define ROWS (13)
+# define COL (20)
+# define FOV_ANGLE (60 * (PI / 180))
+# define WINDOW_WIDTH (10)
+# define WINDOW_HEIGHT (10)
+# define MLX_ERROR 1
+# define RED_PIXEL 0xFF0000
+# define GREEN_PIXEL 0xFF00
+# define BLACK_PIXEL 0x041014
+# define WHITE_PIXEL 0xFFFFFF
 
 
 
@@ -61,15 +59,17 @@ typedef struct	player
 	float walkSpeed;
 	float turnSpeed;
 } t_player;
+
+
 typedef struct s_cub
 {
 	char	**map;
 	int		map_height;
 	int 	map_width;
 	int i;
-	int y;
+	float	y;
 	int j;
-	int x;
+	float x;
 	
 	void	*mlx;
 	void	*win;
@@ -94,5 +94,10 @@ char *gnl(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void    check_map_is_empty(char **map);
 void    initializeWindow(t_cub cub);
+void getPosition(t_cub *cub);
+double deg2rad(double deg);
+double rad2deg(double rad);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void ddaAlgo(t_cub cub, int x1, int y1, int x2, int y2);
 
 #endif

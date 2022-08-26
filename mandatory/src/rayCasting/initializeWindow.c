@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initializeWindow.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 06:50:30 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/24 19:18:59 by mhaddaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../headers/cub3d.h"
 
 
@@ -180,22 +168,20 @@ int len_y(t_cub cub)
         i++;
     return (i);
 }
-void    setup(t_cub cub)
+void    setup(t_cub *cub)
 {
-    cub.player.x = cub.map_width / 2;
-    cub.player.y = cub.map_height / 2;
-    cub.player.width = 5;
-    cub.player.height = 5;
-    cub.player.turnDirection = 0;
-    cub.player.walkDirection = 0;
-    cub.player.rotationAngle = PI / 2;
-    cub.player.walkSpeed = 100;
-    cub.player.turnSpeed = 45 * (PI / 180); 
+    cub->player.width = 5;
+    cub->player.height = 5;
+    cub->player.turnDirection = 0;
+    cub->player.walkDirection = 0;
+    cub->player.rotationAngle = PI / 2;
+    cub->player.walkSpeed = 100;
+    cub->player.turnSpeed = 45 * (PI / 180); 
 }
 void renderMap(t_cub cub, int x, int y, int color)
 {
     int x1;
-    x1 = cub.y;
+    x1 = cub.y + 1;
     
     while (cub.x < x)
     {
@@ -207,6 +193,7 @@ void renderMap(t_cub cub, int x, int y, int color)
         }
         cub.x++;
     }
+    
     mlx_put_image_to_window(cub.mlx, cub.win, cub.data.img, 0, 0);
     // printf("%d\n", cub.map_width);
     // printf("kdjf\n");
@@ -223,19 +210,16 @@ void giVal(t_cub cub, int i, int j, int color, int p)
         x = cub.x + 30;
         y = cub.y + 30;    
     }
-    else
-    {
-        cub.x = i * 30;
-        cub.y = j * 30;
-        x = cub.x + 10;
-        y = cub.y + 10;
-        
-    }
-    renderMap(cub, x, y, color);
+    renderMap(cub, x , y , color);
     
+}
+void printPlayer( t_cub cub)
+{
+    int x = cub.player.x;
 }
 void check_map(t_cub cub)
 {
+    printPlayer(cub);
     int i;
     int j;
 
@@ -249,8 +233,6 @@ void check_map(t_cub cub)
                 giVal(cub, i, j, WHITE_PIXEL, 0);
             if (cub.map[i][j] == '0')
                 giVal(cub, i, j, GREEN_PIXEL, 0);
-            if (cub.map[i][j] == 'P')
-                giVal(cub, i, j, RED_PIXEL, 1);
             j++;
         }
         i++;
@@ -263,6 +245,31 @@ int len_height(t_cub cub)
         i++;
     return (i);
 }
+void calculateY(t_cub *cub)
+{
+    float x = sin(cub->player.rotationAngle);
+    printf("%f", x);
+
+    float y = cub->player.y * sin(cub->player.rotationAngle) * 30;
+    // printf("%f\n",y );
+}
+
+void put_player(t_cub *cub)
+{
+    // calculateY(&cub);
+    float x = (cub->player.x * 30) + (cos(cub->player.rotationAngle) * 30);
+    float y = x + (cub->player.x * 30) + (cos(cub->player.rotationAngle) * 30);
+    printf("%f\n", cub->player.x * 30);
+    printf("%f\n", x);
+    
+    while (x < (cub->player.x * 30) + 100)
+    {
+        my_mlx_pixel_put(&cub->data, x, cub->player.y * 30, RED_PIXEL);
+        x++;
+    }
+    mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
+}
+
 void    initializeWindow(t_cub cub)
 {
     // renderMap()
@@ -274,11 +281,16 @@ void    initializeWindow(t_cub cub)
         ft_strerror(3);
     cub.data.img = mlx_new_image(cub.mlx, 1500, 1000);
     cub.data.addr = mlx_get_data_addr(cub.data.img,&cub.data.bits_per_pixel, &cub.data.line_length, &cub.data.endian);
-    setup(cub);
     cub.map_width = (int)ft_strlen(cub.map[0]);
     cub.map_height = len_height(cub);
     ground(cub);
     check_map(cub);
+    getPosition(&cub);
+    // printf("%f\n", cub.player.x);
+    // printf("%f\n", cub.player.y);
+    setup(&cub);
+    ddaAlgo(cub, 10*30,10*30, 4*30,4*30);
+    // put_player(&cub);
     // ground(cub);
     // mlx_loop_hook(cub.mlx, &ground, &cub);
     
