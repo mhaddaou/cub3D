@@ -181,7 +181,7 @@ void    setup(t_cub *cub)
 void renderMap(t_cub cub, int x, int y, int color)
 {
     int x1;
-    x1 = cub.y + 1;
+    x1 = cub.y;
     
     while (cub.x < x)
     {
@@ -257,15 +257,19 @@ void calculateY(t_cub *cub)
 void put_player(t_cub *cub)
 {
     // calculateY(&cub);
-    float x = (cub->player.x * 30) + (cos(cub->player.rotationAngle) * 30);
-    float y = x + (cub->player.x * 30) + (cos(cub->player.rotationAngle) * 30);
-    printf("%f\n", cub->player.x * 30);
-    printf("%f\n", x);
+    int x = cub->player.x * 30;
+    int y = cub->player.y * 30;
     
-    while (x < (cub->player.x * 30) + 100)
+    while (y < (cub->player.y * 30 )  + 10)
     {
-        my_mlx_pixel_put(&cub->data, x, cub->player.y * 30, RED_PIXEL);
-        x++;
+        x = cub->player.x * 30;
+
+        while (x < (cub->player.x * 30) + 10)
+        {
+            my_mlx_pixel_put(&cub->data, x, y, RED_PIXEL);
+            x++;
+        }
+        y++;
     }
     mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
 }
@@ -289,8 +293,11 @@ void    initializeWindow(t_cub cub)
     // printf("%f\n", cub.player.x);
     // printf("%f\n", cub.player.y);
     setup(&cub);
-    ddaAlgo(cub, 10*30,10*30, 4*30,4*30);
-    // put_player(&cub);
+    DDA(cub, cub.player.x * 30, cub.player.y * 30, (cub.player.x + 1) * 30, (cub.player.y + 1) * 30);
+
+    // ddaAlgo(cub, 30, 30, 3 * 30, 3 * 30);
+    
+    put_player(&cub);
     // ground(cub);
     // mlx_loop_hook(cub.mlx, &ground, &cub);
     

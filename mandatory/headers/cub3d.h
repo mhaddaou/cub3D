@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/25 14:45:06 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/26 08:31:22 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void getPosition(t_cub *cub);
 double deg2rad(double deg);
 double rad2deg(double rad);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void ddaAlgo(t_cub cub, int x1, int y1, int x2, int y2);
+void ddaAlgo(t_cub cub, float x1, float y1, int x2, int y2);
+void DDA(t_cub cub, int X0, int Y0, int X1, int Y1);
 
 #endif
