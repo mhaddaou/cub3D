@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:43:54 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/25 10:51:14 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:27:23 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,25 +344,3 @@ void    initializeWindow(t_cub cub)
 }
 #include "../../headers/cub3d.h"
 
-void getPosition(t_cub cub)
-{
-    int i;
-    int j;
-
-    i = 0;
-    while ( cub.map[i])
-    {
-        j = 0;
-        while (cub.map[i][j])
-        {
-            if (cub.map[i][j] == 'P')
-            {
-                cub.player.x = j;
-                cub.player.y = i;
-            }
-                j++;
-        }
-        i++;
-    }
-    
-}

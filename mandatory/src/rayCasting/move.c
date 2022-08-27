@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:19:35 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/27 11:13:49 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:17:55 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void moveLeft (t_cub *cub)
     cub->player.x -= 0.2;
     if (checkWalls(cub) == EXIT_FAILURE)
     {
-        cub->player.x += 0.2;   
+        cub->player.x += 0.2;
        return ;
     }
     else

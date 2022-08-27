@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/27 11:16:36 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:33:08 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,8 @@ void moveRight (t_cub *cub);
 void moveLeft (t_cub *cub);
 void moveUp (t_cub *cub);
 void moveDown (t_cub *cub);
+void printAllc(t_cub *cub);
+void printAll(t_cub *cub);
+void giVal(t_cub *cub, int i, int j, int color, int p);
+void renderMap(t_cub *cub, int x, int y, int color);
 #endif

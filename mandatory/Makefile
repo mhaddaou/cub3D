@@ -6,11 +6,11 @@
 #    By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/22 06:10:23 by mhaddaou          #+#    #+#              #
-#    Updated: 2022/08/27 11:15:20 by mhaddaou         ###   ########.fr        #
+#    Updated: 2022/08/27 11:34:04 by mhaddaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = src/parsing/check_extension.c src/parsing/cub3d.c src/parsing/ft_free.c src/parsing/ft_str.c src/get_next_line/gnl.c src/parsing/read_map.c src/parsing/util.c src/parsing/ft_check.c src/rayCasting/initializeWindow.c src/rayCasting/posPlayer.c src/rayCasting/convert.c src/rayCasting/ddaAlgo.c src/rayCasting/move.c src/rayCasting/key_hook.c
+SRC = src/parsing/check_extension.c src/parsing/cub3d.c src/parsing/ft_free.c src/parsing/ft_str.c src/get_next_line/gnl.c src/parsing/read_map.c src/parsing/util.c src/parsing/ft_check.c src/rayCasting/initializeWindow.c src/rayCasting/posPlayer.c src/rayCasting/convert.c src/rayCasting/ddaAlgo.c src/rayCasting/move.c src/rayCasting/key_hook.c src/rayCasting/printAll.c src/rayCasting/checkMapAndPrint.c
 OBJ = ${SRC:.c=.o}
 
 CC = gcc
