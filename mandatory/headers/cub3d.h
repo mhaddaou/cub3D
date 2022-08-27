@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 05:31:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 18:37:50 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/27 11:16:36 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_cub
 	float	y;
 	int j;
 	float x;
+	int check ;
 	
 	void	*mlx;
 	void	*win;
@@ -112,4 +113,11 @@ void put_player(t_cub *cub);
 void    setup(t_cub *cub);
 void printAllc(t_cub *cub);
 int checkWalls(t_cub *cub);
+int checkWallR(t_cub *cub);
+int checkWallD(t_cub *cub);
+int checkWallU(t_cub *cub);
+void moveRight (t_cub *cub);
+void moveLeft (t_cub *cub);
+void moveUp (t_cub *cub);
+void moveDown (t_cub *cub);
 #endif

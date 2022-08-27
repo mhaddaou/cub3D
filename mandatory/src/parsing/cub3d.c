@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 06:27:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/26 11:56:07 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/27 10:14:00 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 	char	*file_name;
 	if (argc > 1)
 	{
+		cub.check = 1;
 		
 		if (check_extension(argv[1]) == -1)
 			ft_strerror(1);
