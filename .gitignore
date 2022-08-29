@@ -1,0 +1,8 @@
+
+#files
+*.o
+*.json
+*.a
+.DS_Store
+*.exe
+*.log
