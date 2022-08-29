@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:54:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:04:20 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:58:29 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	err_hand(int err)
 		ft_putstr_fd("Error\n=> the characters on the first line in not all is 1", 2);
 	if (err == 8)
 		ft_putstr_fd("Error\n=> path", 2);
+	if (err == 9)
+		ft_putstr_fd("Error\n=> line one", 2);
 	exit(EXIT_FAILURE);
 }
