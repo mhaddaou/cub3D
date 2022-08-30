@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetElementC.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:18:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 11:45:59 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:07:52 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void    GetCB(t_map *map, int i)
         i++;
         j++;
     }
-    map->F.B = ft_atoi(map->number);
+    checkColor(map->number);
+    map->C.B = ft_atoi(map->number);
+    printf("b= %d\n", map->C.B);
     ft_bzero(map->number, 10);
 }
 void    GetCG(t_map *map, int i)
@@ -35,6 +37,7 @@ void    GetCG(t_map *map, int i)
     {
         if (map->ar2[i] == ',')
         {
+            checkColor(map->number);
             map->C.G = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;
@@ -55,7 +58,8 @@ void GetC(t_map *map)
     while (map->ar2[i])
     {
         if (map->ar2[i] == ',')
-        { 
+        {
+            checkColor(map->number);
             map->C.R = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;

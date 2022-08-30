@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:08:44 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 09:50:29 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char *argv[])
     CheckEmptyPath(&map);
 	GetTrueMap(&cub);
 	CheckTrueMap(&cub);
+	printf("C , B == %d\n", cub.map->C.B);
 	sleep(111);
 	
 	

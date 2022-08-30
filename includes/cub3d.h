@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:08:30 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:03:09 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,13 @@ void    GetG(t_map *map, int i);
 void    GetB(t_map *map, int i);
 void    CheckTrueMap(t_cub *cub);
 void CheckEmptyPath(t_map *map);
+
+
+
+void    CheckLastLine(char **str);
+
+void 	checkColorRange(int r);
+void 	checkColor(char *str);
+void    CheckWalls(t_cub *cub);
 
 #endif
