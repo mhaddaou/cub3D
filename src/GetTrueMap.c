@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:55:47 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 11:51:45 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:02:36 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ void GetTrueMap(t_cub *cub)
 {
     int i;
     int j;
-
+    
     i = cub->map->check;
+    // printf("i == %d\n", i);
     while (!ft_strncmp(cub->map->map[i],"\n", ft_strlen(cub->map->map[i])))
         i++;
-    j = i;
+    j = i ;
     while (cub->map->map[j])
         j++;
+ 
     InitializeTrueMap(cub, i, j);
 }
