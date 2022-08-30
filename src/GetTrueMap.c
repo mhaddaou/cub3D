@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetTrueMap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:55:47 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:52:04 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:51:45 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void InitializeTrueMap(t_cub *cub, int i, int j)
 {
     int len;
     len = (j - i) + 1;
-    cub->map->TrueMap = (char **) malloc (sizeof(char) *len);
+    cub->map->TrueMap = (char **) malloc (sizeof(char *) *(len));
     if (!cub->map->TrueMap)
         err_hand(1);
     GoToC(cub->map, i, j);
