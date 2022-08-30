@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetElementC.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:18:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 11:45:59 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 09:13:40 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    GetCB(t_map *map, int i)
         i++;
         j++;
     }
+    checkColorRange(ft_atoi(map->number));
     map->F.B = ft_atoi(map->number);
     ft_bzero(map->number, 10);
 }
@@ -35,6 +36,7 @@ void    GetCG(t_map *map, int i)
     {
         if (map->ar2[i] == ',')
         {
+            checkColorRange(ft_atoi(map->number));
             map->C.G = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;
@@ -55,7 +57,8 @@ void GetC(t_map *map)
     while (map->ar2[i])
     {
         if (map->ar2[i] == ',')
-        { 
+        {
+            checkColorRange(ft_atoi(map->number));
             map->C.R = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;
