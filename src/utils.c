@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 12:16:50 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/28 13:11:15 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 09:15:11 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ char *ft_strncpy(char *s1, char *s2, int len)
     }
     s2[i] = '\0';
     return (s2);
+}
+
+void checkColorRange(int r)
+{
+    if (r < 0 || r > 255)
+        err_hand(11);
 }
