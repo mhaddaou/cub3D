@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 12:16:50 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 09:15:11 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 10:08:39 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,21 @@ void checkColorRange(int r)
 {
     if (r < 0 || r > 255)
         err_hand(11);
+}
+
+void checkColor(char *str)
+{
+    int i;
+
+    i = 0;
+    if (!(*str))
+        err_hand(0);
+    while (str[i])
+    {
+        if (!ft_isdigit(str[i]))
+            err_hand(13);
+       i++;
+    }
+    
+    checkColorRange(ft_atoi(str));
 }

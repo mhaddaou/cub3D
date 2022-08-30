@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:54:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 09:07:00 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 10:05:37 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,9 @@ void	err_hand(int err)
 		ft_putstr_fd("Error\n=> last line", 2);
 	if (err == 11)
 		ft_putstr_fd("Error\n=> color out of range", 2);
+	if (err == 12)
+		ft_putstr_fd("Error\n=> Walls !", 2);
+	if (err == 13)
+		ft_putstr_fd("Error\n=>  color in not digit", 2);
 	exit(EXIT_FAILURE);
 }

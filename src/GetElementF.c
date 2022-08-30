@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 09:14:42 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 10:04:45 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    GetB(t_map *map, int i)
         i++;
         j++;
     }
-    checkColorRange(ft_atoi(map->number));
+    checkColor(map->number);
     map->F.B = ft_atoi(map->number);
     ft_bzero(map->number, 10);
 }
@@ -38,7 +38,7 @@ void    GetG(t_map *map, int i)
     {
         if (map->ar[i] == ',')
         {
-            checkColorRange(ft_atoi(map->number));
+            checkColor(map->number);
             map->F.G = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;
@@ -62,7 +62,7 @@ void GetF(t_map *map)
     {
         if (map->ar[i] == ',')
         { 
-            checkColorRange(ft_atoi(map->number));
+            checkColor(map->number);
             map->F.R = ft_atoi(map->number);
             ft_bzero(map->number, 10);
             i++;
