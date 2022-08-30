@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:18:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 10:07:52 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 11:21:18 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void    GetCB(t_map *map, int i)
     }
     checkColor(map->number);
     map->C.B = ft_atoi(map->number);
-    printf("b= %d\n", map->C.B);
     ft_bzero(map->number, 10);
 }
 void    GetCG(t_map *map, int i)
