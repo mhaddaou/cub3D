@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 13:53:31 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/30 15:08:09 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void    CheckWalls(char **str)
 void    CheckTrueMap(t_cub *cub)
 {
     CheckFirstLine(cub->map->TrueMap);
-    // CheckLastLine(cub->map->TrueMap);
-    CheckWalls(cub->map->TrueMap);
+    CheckLastLine(cub->map->TrueMap);
+    // CheckWalls(cub->map->TrueMap);
+    InitSide(cub);
+    CheckObjects(cub);
  }
