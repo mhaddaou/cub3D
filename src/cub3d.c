@@ -41,6 +41,4 @@ int	main(int argc, char *argv[])
 	CheckTrueMap(&cub);
 	sleep(1111);
 	
-	
-	
 }

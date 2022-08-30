@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 11:38:04 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 12:01:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,6 @@ void    CheckLastLine(char **str);
 
 void 	checkColorRange(int r);
 void 	checkColor(char *str);
-void    CheckWalls(t_cub *cub);
+void    CheckWalls(char **str);
 
 #endif

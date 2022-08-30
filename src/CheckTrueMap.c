@@ -82,7 +82,7 @@ void    CheckInsideMap(char **str)
     
 }
 
-void    CheckWalls(t_cub *cub)
+void    CheckWalls(char **str)
 {
     int i;
     int j;
@@ -91,26 +91,25 @@ void    CheckWalls(t_cub *cub)
     i = 0;
     j = 0;
     len = 0;
-    while (cub->map->TrueMap[i])
+    while (str[i])
         i++;
-    printf("first == %s", cub->map->TrueMap[i - 1]);
-    // while (str[0][j] && str[i - 1][j])
-    // {
-    //     // if (str[0][j] != ' ' || str[0][j] != '\t')
-    //     //     i++;
-    //     // printf("first == %s", str[i - 3]);
-    //     if (str[0][j] != '1' || str[i - 1][j] != '1')
-    //         err_hand(12);
-    //     j++;
-    // }
+    printf("first == %s\n", str[0]);
+    printf("last  == %s\n", str[i - 1]);
+    while (str[0][j] != '\0' && str[i - 1][j] != '\0')
+    {
+        if (str[0][j] == ' ')
+            j++;
+        if (str[0][j] != '1' || str[i - 1][j] != '1')
+            err_hand(12);
+        j++;
+    }
     // i = 0;
     // while (str[len])
     //     len++;
     // while (str[i])
 	// {
-    //     // if (str[i][0] != ' ' || str[i][0] != '\t')
-    //     //     i++;
-    //     printf("last == %c", str[i][0]);
+    //     if (str[i][0] == ' ')
+    //         i++;
 	// 	if (str[i][0] != '1' || str[i][len - 1] != '1' )
 	// 		err_hand(12);
 	// 	i++;
@@ -120,7 +119,6 @@ void    CheckWalls(t_cub *cub)
 void    CheckTrueMap(t_cub *cub)
 {
     CheckFirstLine(cub->map->TrueMap);
-
-    CheckLastLine(cub->map->TrueMap);
-    // CheckWalls(cub);
-}
+    // CheckLastLine(cub->map->TrueMap);
+    CheckWalls(cub->map->TrueMap);
+ }
