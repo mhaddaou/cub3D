@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 12:01:53 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 15:56:48 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,14 @@ typedef struct s_map
 	int		w;
 	int		e;
 	int		s;
-	int f;
-	int c;
-	int	check;
+	int		f;
+	int		c;
+	int		check;
 	int		i;
 	int 	j;
 	char	*ar;
 	char	*ar2;
+	char	direction;
 	
 } t_map;
 
@@ -121,7 +122,8 @@ void    GetG(t_map *map, int i);
 void    GetB(t_map *map, int i);
 void    CheckTrueMap(t_cub *cub);
 void CheckEmptyPath(t_map *map);
-
+void CheckObjects(t_cub *cub);
+void InitSide(t_cub *cub);
 
 
 void    CheckLastLine(char **str);
