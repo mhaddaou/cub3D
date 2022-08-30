@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 09:45:52 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/30 13:53:31 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 void    CheckFirstLine(char **str)
 {
     int i;
-    
     i = 0;
     while (str[0][i])
     {
         if (str[0][i] == ' ' )
             if (str[1][i] != ' ' && str[1][i] != '1')
+                    err_hand(9);
+        if (str[0][i] == ' ' && str[1][i] == '1')
+            if (str[1][i + 1] != '1')   
                 err_hand(9);
-        printf("%d\n", i);
-        // if (str[0][i] != '1' || str[0][i] != ' ')
-            // err_hand(9);
+        if (str[0][i] != '1' && str[0][i] != ' ')   
+            err_hand(9);
+        if ((str[0][i] == '1'&& str[0][i + 1] == '\0') && str[1][i + 1] == '0')
+            err_hand(9);
         i++;
     }
-    free(str[0]);
-    
 }
 
 void    CheckLastLine(char **str)
@@ -40,15 +41,19 @@ void    CheckLastLine(char **str)
     len = 0;
     while (str[len])
         len++;
-    // while (str[len - 1][i] == ' ')
-    //     i++;
-    while (str[len - 1][i])
+    len--;
+      while (str[len][i])
     {
-        if (str[len - 1][i] == ' ')
-            if (str[len - 2][i] != ' ' &&  str[len - 2][i] != '1')
+        if (str[len][i] == ' ' )
+            if (str[len - 1][i] != ' ' && str[len - 1][i] != '1')
+                    err_hand(10);
+        if (str[len][i] == ' ' && str[1][i] == '1')
+            if (str[len - 1][i + 1] != '1')   
                 err_hand(10);
-        // if (str[len - 1][i] != ' ' && str[len - 1][i] != '1')
-        //     err_hand(10);
+        if (str[len][i] != '1' && str[len][i] != ' ')   
+            err_hand(10);
+        if ((str[len][i] == '1'&& str[len][i + 1] == '\0') && str[len - 1][i + 1] == '0')
+            err_hand(10);
         i++;
     }
 }
@@ -114,8 +119,8 @@ void    CheckWalls(t_cub *cub)
 
 void    CheckTrueMap(t_cub *cub)
 {
-    // CheckFirstLine(cub->map->TrueMap);
+    CheckFirstLine(cub->map->TrueMap);
 
-    // CheckLastLine(cub->map->TrueMap);
-    CheckWalls(cub);
+    CheckLastLine(cub->map->TrueMap);
+    // CheckWalls(cub);
 }
