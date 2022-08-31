@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_hand.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:54:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 13:39:23 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:33:56 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void	err_hand(int err)
 		ft_putstr_fd("Error\n=> other characters", 2);
 	if (err == 15)
 		ft_putstr_fd("Error\n=> deplicate direction or not found any direction", 2);
+	if (err == 16)
+		ft_putstr_fd("Error\n=> Map path is invalid", 2);
 	exit(EXIT_FAILURE);
 }

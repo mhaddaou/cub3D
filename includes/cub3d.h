@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 14:01:04 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:34:46 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef struct s_map
 {
 	t_color F;
 	t_color C;
-	int		*positionXY[XY];
+	int		posX;
+	int 	posY;
 	char	*Ntexture;
 	char	*Etexture;
 	char	*Wtexture;
@@ -129,5 +130,8 @@ void CheckEmptyPath(t_map *map);
 void InitSide(t_cub *cub);
 void CheckObjects(t_cub *cub);
 int CheckElement(t_cub *cub);
-int CalculeTrueMap(t_cub *cub);
+int 	CalculeTrueMap(t_cub *cub);
+
+void 	CheckInsideMap(t_cub *cub);
+void	GetPositionPlayer(t_cub *cub);
 #endif

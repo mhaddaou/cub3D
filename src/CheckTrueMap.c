@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 14:02:39 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:40:41 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void    CheckTrueMap(t_cub *cub)
     CheckWalls(cub->map->TrueMap);
     InitSide(cub);
     CheckObjects(cub);
+    GetPositionPlayer(cub);
     cub->map_height = CalculeTrueMap(cub);
-    // CheckInsideMap(cub);
+    CheckInsideMap(cub);
 }

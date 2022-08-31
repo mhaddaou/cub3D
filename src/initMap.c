@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:31:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 11:49:04 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:35:04 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,5 @@ void init(t_map *map)
     if (!map->number)
         err_hand(1);
     initColor(map);
-    while (i < XY)
-    {
-        map->positionXY[i] = 0;
-        i++;
-    }
     ft_bzero(map->number, 10);
 }
