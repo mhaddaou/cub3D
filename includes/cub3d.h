@@ -73,13 +73,14 @@ typedef struct s_map
 	int		w;
 	int		e;
 	int		s;
-	int f;
-	int c;
-	int	check;
+	int		f;
+	int		c;
+	int		check;
 	int		i;
 	int 	j;
 	char	*ar;
 	char	*ar2;
+	char	direction;
 	
 } t_map;
 
@@ -121,7 +122,14 @@ void    GetG(t_map *map, int i);
 void    GetB(t_map *map, int i);
 void    CheckTrueMap(t_cub *cub);
 void CheckEmptyPath(t_map *map);
-void InitSide(t_cub *cub);
 void CheckObjects(t_cub *cub);
+void InitSide(t_cub *cub);
+
+
+void    CheckLastLine(char **str);
+
+void 	checkColorRange(int r);
+void 	checkColor(char *str);
+void    CheckWalls(char **str);
 
 #endif
