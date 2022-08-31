@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:47:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 09:49:33 by izail            ###   ########.fr       */
+/*   Updated: 2022/08/29 16:07:36 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void CheckEmptyPath(t_map *map)
 		err_hand(8);
     if (!*map->Etexture)
 		err_hand(8);
-    // printf("%dmap->C.R     
 }
 
 t_map    *CheckMap(t_map *map)
