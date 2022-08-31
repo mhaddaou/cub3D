@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 11:12:10 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:10:01 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,8 @@ int	main(int argc, char *argv[])
     CheckEmptyPath(&map);
     CheckEmptyPath(&map);
 	GetTrueMap(&cub);
-	int i = 0;
 	CheckTrueMap(&cub);
-	while (cub.map->TrueMap[i])
-	{
-		printf("%s\n", cub.map->TrueMap[i]);
-		i++;
-	}
-	printf("blabla fik al9lawi");
-	
-	
+	// sleep(1111);
 	
 	
 }

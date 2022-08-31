@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 11:49:36 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:01:04 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 
 #define XY (2)
 #define TEXTURES (5)
+# define DN (0)
+# define DS (2)
+# define DW (3)
+# define DE (4)
 
 
 # define A (0)
@@ -80,6 +84,7 @@ typedef struct s_map
 	int 	j;
 	char	*ar;
 	char	*ar2;
+	char direction;
 	
 } t_map;
 
@@ -123,5 +128,6 @@ void    CheckTrueMap(t_cub *cub);
 void CheckEmptyPath(t_map *map);
 void InitSide(t_cub *cub);
 void CheckObjects(t_cub *cub);
-
+int CheckElement(t_cub *cub);
+int CalculeTrueMap(t_cub *cub);
 #endif

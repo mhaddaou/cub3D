@@ -6,49 +6,76 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 14:19:16 by izail             #+#    #+#             */
-/*   Updated: 2022/08/31 11:47:16 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:52:17 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-void CheckElement(t_cub *cub)
+int CheckElement(t_cub *cub)
 {
-    if (cub->map->n != 0 && cub->map->n != 1)
-        if (cub->map->s != 0 && cub->map->s != 1)
-            if (cub->map->w != 0 && cub->map->w != 1)
-                if (cub->map->e != 0 && cub->map->e != 1)
-                    err_hand(15);
     
-    
+    if (cub->map->n == 1)
+        if (cub->map->s == 0)
+            if (cub->map->e == 0)
+                if (cub->map->w == 0)
+                    return (DN);
+    if (cub->map->n == 0)
+        if (cub->map->s == 1)
+            if (cub->map->e == 0)
+                if (cub->map->w == 0)
+                    return (DS);
+    if (cub->map->n == 0)
+        if (cub->map->s == 0)
+            if (cub->map->e == 1)
+                if (cub->map->w == 0)
+                    return (DE);
+    if (cub->map->n == 0)
+        if (cub->map->s == 0)
+            if (cub->map->e == 0)
+                if (cub->map->w == 1)
+                    return (DW);
+    return (EXIT_FAILURE);
 }
+
+void GetDirection(t_cub *cub)
+{
+    if (cub->map->check == DN)
+        cub->map->direction = 'n';
+    else if (cub->map->check == DS)
+        cub->map->direction = 's';
+    else if (cub->map->check == DW)
+        cub->map->direction = 'w';
+    else if (cub->map->check == DE)
+        cub->map->direction = 'e';
+}
+
 void  CalculElement(t_cub *cub)
 {
-    char    **map;
     int     i;
     int     j;
 
     i = 0;
-    map = cub->map->TrueMap;
-    while (map[i])
+    while (cub->map->TrueMap[i])
     {
         j = 0;
-        while (map[i][j])
+        while (cub->map->TrueMap[i][j])
         {
-            if (map[i][j] == 'N')
+            if (cub->map->TrueMap[i][j] == 'N')
                 cub->map->n++;
-            if (map[i][j] == 'S')
+            if (cub->map->TrueMap[i][j] == 'S')
                 cub->map->s++;
-            if (map[i][j] == 'W')
+            if (cub->map->TrueMap[i][j] == 'W')
                 cub->map->w++;
-            if (map[i][j] == 'E')
+            if (cub->map->TrueMap[i][j] == 'E')
                 cub->map->e++;
             j++;
         }
         i++;
     }
-    printf("nn == %d\n", cub->map->n);
-    CheckElement(cub);
-    
+    cub->map->check = CheckElement(cub);
+    if (cub->map->check == EXIT_FAILURE)
+        err_hand(15);
+    GetDirection(cub);
 }
 
 void CheckObjects(t_cub *cub)
@@ -76,6 +103,5 @@ void CheckObjects(t_cub *cub)
         }
         i++;
     }
-    
     CalculElement(cub);
 }

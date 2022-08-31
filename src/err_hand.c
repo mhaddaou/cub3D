@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:54:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 11:13:23 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:39:23 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	err_hand(int err)
 	if (err == 14)
 		ft_putstr_fd("Error\n=> other characters", 2);
 	if (err == 15)
-		ft_putstr_fd("Error\n=> deplicate direction", 2);
+		ft_putstr_fd("Error\n=> deplicate direction or not found any direction", 2);
 	exit(EXIT_FAILURE);
 }
