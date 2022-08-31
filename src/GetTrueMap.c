@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:55:47 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:52:04 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:00:07 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void InitializeTrueMap(t_cub *cub, int i, int j)
 {
     int len;
     len = (j - i) + 1;
-    cub->map->TrueMap = (char **) malloc (sizeof(char) *len);
+    cub->map->TrueMap = (char **) malloc (sizeof(char *) *len);
     if (!cub->map->TrueMap)
         err_hand(1);
     GoToC(cub->map, i, j);
@@ -45,7 +45,7 @@ void GetTrueMap(t_cub *cub)
     while (!ft_strncmp(cub->map->map[i],"\n", ft_strlen(cub->map->map[i])))
         i++;
     j = i;
-    while (cub->map->map[j])
+    while (cub->map->map[j] && ft_strncmp(cub->map->map[j],"\n", ft_strlen(cub->map->map[j])))
         j++;
     InitializeTrueMap(cub, i, j);
 }

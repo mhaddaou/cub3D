@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:08:44 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:12:10 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,22 @@ int	main(int argc, char *argv[])
 	}
 	file_name = argv[1];
 	map.map = read_map(file_name);
-	// map.map_height = open_count_line(file_name);
+	map.map_height = open_count_line(file_name);
 	init(&map);
 	cub.map = CheckMap(&map);
 
-    // CheckEmptyPath(map);
+    CheckEmptyPath(&map);
     CheckEmptyPath(&map);
 	GetTrueMap(&cub);
+	int i = 0;
 	CheckTrueMap(&cub);
-	sleep(111);
+	while (cub.map->TrueMap[i])
+	{
+		printf("%s\n", cub.map->TrueMap[i]);
+		i++;
+	}
+	printf("blabla fik al9lawi");
+	
 	
 	
 	

@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/29 16:08:30 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:49:36 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,7 @@ void    GetG(t_map *map, int i);
 void    GetB(t_map *map, int i);
 void    CheckTrueMap(t_cub *cub);
 void CheckEmptyPath(t_map *map);
+void InitSide(t_cub *cub);
+void CheckObjects(t_cub *cub);
 
 #endif
