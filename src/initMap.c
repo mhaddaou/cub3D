@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:31:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/30 15:07:51 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:49:04 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void initColor(t_map *map)
     map->C.B = 0;
     
 }
+
 void InitSide(t_cub *cub)
 {
     cub->map->e = 0;
