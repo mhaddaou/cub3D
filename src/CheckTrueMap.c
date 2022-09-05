@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 15:40:41 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/02 13:12:17 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ void    CheckTrueMap(t_cub *cub)
     GetPositionPlayer(cub);
     cub->map_height = CalculeTrueMap(cub);
     CheckInsideMap(cub);
+    ft_mlx(cub);
 }

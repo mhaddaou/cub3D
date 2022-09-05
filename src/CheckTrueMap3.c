@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:55:17 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 15:42:22 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/04 12:33:56 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void CheckInsideMap(t_cub *cub)
     while (i < cub->map_height - 1)
     {
         j = 1;
-        printf("%s\n", cub->map->TrueMap[i]);
             while (cub->map->TrueMap[i][j])
             {
                 if (cub->map->TrueMap[i + 1][j] == '0')

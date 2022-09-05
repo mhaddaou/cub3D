@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/08/31 15:34:46 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/04 19:22:02 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define DS (2)
 # define DW (3)
 # define DE (4)
+# define RN = (1.5 *M_PI)
+# define RS = (M_PI / 2)
+# define RW = (M_PI)
+# define RE = (0)
 
 
 # define A (0)
@@ -35,6 +39,8 @@
 # define D (2)
 # define W (13)
 # define ESC (53)
+# define LFT (123)
+# define RGT (124)
 # define VALIDE (0)
 # define NVALIDE (1)
 
@@ -53,12 +59,22 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_keys
+{
+	int w;
+	int a;
+	int s;
+	int d;
+	int rl;
+	int rr;
+}	t_keys;
+
 typedef struct s_player
 {
-	float x;
-	float y;
-	float speed;
-	float rotate;
+	double x;
+	double y;
+	double speed;
+	double rotate;
 }	t_player;
 typedef struct s_map
 {
@@ -95,8 +111,16 @@ typedef struct s_cub
 	int		map_height;
 	void	*mlx;
 	void	*win;
+	int rx;
+	int ry;
+	int x;
+	int y;
+	int fov;
+	t_keys key;
 	t_data data;
 	void	*img_ground;
+	double	stepx;
+	double	stepy;
 	t_player player;
 	int		move_p;
 }	t_cub;
@@ -134,4 +158,20 @@ int 	CalculeTrueMap(t_cub *cub);
 
 void 	CheckInsideMap(t_cub *cub);
 void	GetPositionPlayer(t_cub *cub);
+void ft_mlx(t_cub *cub);
+void mouveLeft(t_cub *cub);
+void mouveRight(t_cub *cub);
+void mouveUp(t_cub *cub);
+void mouveDown(t_cub *cub);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void CheckPrintTrueMap(t_cub *cub);
+void DDA(t_cub *cub, int X0, int Y0, int X1, int Y1);
+void ddaALGO(t_cub *cub);
+int update (t_cub *cub);
+void ft_iniit(t_cub *cub);
+int mouve(t_cub *cub);
+void RotateLeft(t_cub *cub);
+void RotateRight(t_cub *cub);
+void FieldOfView(t_cub *cub);
+void raycasting(t_cub *cub);
 #endif
