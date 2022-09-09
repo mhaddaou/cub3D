@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:13:36 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/04 17:11:52 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:58:14 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,21 @@ int update (t_cub *cub)
     double x,y,j,i;
     x = cub->player.x * 30;
     y = cub->player.y * 30;
-    i = y + 10;
+    i = y + 5;
     j = x + 10;
     CheckPrintTrueMap(cub);
-    while (y < i)
-    {
-        x = cub->player.x * 30;
-        while (x < j)
-        {
-            my_mlx_pixel_put(&cub->data, x, y, 1825500);
-            x++;
-        }
-        y++;
-    }
+    // while (y < i)
+    // {
+    //     x = cub->player.x * 30;
+    //     while (x < j)
+    //     {
+    //         my_mlx_pixel_put(&cub->data, x, y, 1825500);
+    //         x++;
+    //     }
+    //     y++;
+    // }
     ddaALGO(cub);
-    // FieldOfView(cub);
+    FieldOfView(cub);
     mlx_put_image_to_window(cub->mlx, cub->win,cub->data.img ,0, 0 );
     return (0);
 }

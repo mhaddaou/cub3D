@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/04 19:22:40 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:52:11 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ft_iniit(t_cub *cub)
 {
     cub->rx = 1080;
     cub->ry = 1080;
-    cub->fov = 60;
+    cub->fov = 60 ;
     cub->player.x = cub->map->posX ;
     cub->player.y = cub->map->posY ;
     InitRotate(cub);
@@ -107,7 +107,7 @@ void ft_mlx(t_cub *cub)
 								&cub->data.endian);
     update(cub);
     // mlx_loop_hook(cub->mlx, &update, cub);
-    mlx_key_hook(cub->win, &mouve, cub);
+    // mlx_key_hook(cub->win, &mouve, cub);
     mlx_hook(cub->win, 2, 0, &checkMV, cub);
     mlx_hook(cub->win, 3, 0, &checkMV2, cub);
     mlx_loop_hook(cub->mlx, &mouve, cub);

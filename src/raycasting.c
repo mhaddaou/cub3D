@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/04 17:16:11 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:00:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,26 @@
 
 void FieldOfView(t_cub *cub)
 {
-    double r = (double)cub->fov / 120;
     
-    int index = 0;
-    double angle;
-    double last = cub->player.rotate + (cub->fov / 2);
-    angle = cub->player.rotate - (cub->fov / 2);
-    
-    // while (angle < last )
-    // {
-    //     DDA(cub, (cub->player.x * 30 + 5), (cub->player.y * 30 + 5), (int)(angle * 30 + 5), ());
-    //     angle += r;
-    // }
+
+    double rd = cub->player.rotate - ((cub->fov * (M_PI / 180)) / 2);
+    rd = fmod(rd, 2 * M_PI);
+    if (rd < 0)
+        rd += 2 * M_PI;
+    double fov_inc = cub->fov * (M_PI / 180)  / cub->rx;
+    double x0 = cub->player.x * 30 + 5;
+    double y0 = cub->player.y * 30 + 5;
+    double x1,y1;
+    int i = 0;
+    while (i  < cub->rx)
+    {
+        x1 = x0  + cos(rd) * 200;
+        y1 = y0  + sin(rd) * 200;
+        
+        DDA(cub, x0, y0, x1, y1, 0xe3e305);
+        rd += fov_inc;
+        i++;
+    }
     
 }
 

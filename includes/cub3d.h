@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/04 19:22:02 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:26:40 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void mouveUp(t_cub *cub);
 void mouveDown(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void CheckPrintTrueMap(t_cub *cub);
-void DDA(t_cub *cub, int X0, int Y0, int X1, int Y1);
+void DDA(t_cub *cub, int X0, int Y0, int X1, int Y1, int color);
 void ddaALGO(t_cub *cub);
 int update (t_cub *cub);
 void ft_iniit(t_cub *cub);
