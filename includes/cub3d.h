@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/09 19:06:59 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:52:59 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,16 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_hv
+{
+	double xh;
+	double yh;
+	double xv;
+	double yv;
+	double x;
+	double y;
+}	t_hv;
+
 typedef struct s_keys
 {
 	int w;
@@ -76,6 +86,21 @@ typedef struct s_player
 	double speed;
 	double rotate;
 }	t_player;
+
+typedef struct s_ray
+{
+	int dof;
+	double rx;
+	double ry;
+	double ra;
+	double xo;
+	double yo;
+	int mx;
+	int my;
+	int mp;
+	int r;
+} t_ray;
+
 typedef struct s_map
 {
 	t_color F;
@@ -116,6 +141,7 @@ typedef struct s_cub
 	int x;
 	int y;
 	int fov;
+	t_hv hv;	
 	t_keys key;
 	t_data data;
 	void	*img_ground;
@@ -123,6 +149,7 @@ typedef struct s_cub
 	double	stepy;
 	t_player player;
 	int		move_p;
+	t_ray ray;
 	char check;
 }	t_cub;
 
@@ -175,4 +202,5 @@ void RotateLeft(t_cub *cub);
 void RotateRight(t_cub *cub);
 void FieldOfView(t_cub *cub);
 void raycasting(t_cub *cub);
+int lenss(char ** str);
 #endif

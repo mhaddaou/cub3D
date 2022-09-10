@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:15:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/09 15:59:37 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:05:06 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void RotateLeft(t_cub *cub)
 {
-     cub->player.rotate -= 0.1;
+     cub->player.rotate -= 0.051;
         mlx_destroy_image(cub->mlx, cub->data.img);
         cub->data.img = mlx_new_image(cub->mlx, cub->rx, cub->ry);
 	    cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel, &cub->data.line_length,
@@ -25,7 +25,7 @@ void RotateLeft(t_cub *cub)
 
 void RotateRight(t_cub *cub)
 {
-    cub->player.rotate += 0.1;
+    cub->player.rotate += 0.051;
         mlx_destroy_image(cub->mlx, cub->data.img);
         cub->data.img = mlx_new_image(cub->mlx, cub->rx, cub->ry);
 	    cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel, &cub->data.line_length,
