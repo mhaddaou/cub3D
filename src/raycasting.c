@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/10 20:59:56 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:06:20 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ int stepHorizontale(t_cub *cub, double rd, double x0, double y0)
     if (is_facing_up)
         ystep *= -1;
     xstep = ystep / tan(rd);
-    if (is_facing_right && xstep < 0)
-        xstep *= -1;
-    if (is_facing_left && xstep > 0)
-        xstep *= -1;
+    // printf("x stp == %f\n", xstep);
+    // if (is_facing_right && xstep < 0)
+    //     xstep *= -1;
+    // if (is_facing_left && xstep > 0)
+    //     xstep *= -1;
     while (1)
     {
         if (checkRaysMap(cub, bx,by) == EXIT_FAILURE)
@@ -88,12 +89,12 @@ int stepHorizontale(t_cub *cub, double rd, double x0, double y0)
         by += ystep;
         bx += xstep;
     }
-    printf("xh == %f  yh == %f\n", bx, by);
-    cub->hv.xh = bx;
-    cub->hv.yh = by;
-    // DDA(cub, x0, y0, bx , by , 0x087f5b);
-    printf("x %f\n", bx);
-    printf("y %f\n", by);
+    // DDA(cub, x0, y0, bx, by  , 0x087f5b);
+    // printf("xh == %f  yh == %f\n", bx, by);
+    // cub->hv.xh = bx;
+    // cub->hv.yh = by;
+    // printf("x %f\n", bx);
+    // printf("y %f\n", by);
     return (EXIT_SUCCESS);
 }
 
@@ -109,40 +110,36 @@ int stepvertical(t_cub *cub, double rd, double x0, double y0)
     bool is_facing_left = !is_facing_right;
     
     bx = floor(x0 / 30) * 30;
-    if (rd >= 1.5 * M_PI || rd <= M_PI / 2)
+    if (is_facing_right)
         bx += 30;
     by = y0 + (tan(rd) * (bx - x0));
     xstep = 30;
-    
-    
-    if (is_facing_right)
+    // printf("rd _v == %f\n", rd);
+    if (is_facing_left)
         xstep *= -1;
     ystep = xstep * tan(rd);
-    // if (is_facing_down && ystep < 0)
-    //     ystep *= -1;
-   if (is_facing_up && ystep < 0)
+    if (is_facing_up && (ystep > 0))
         ystep *= -1;
-    if (is_facing_down && ystep > 0)
+    if (is_facing_down && (ystep < 0))
         ystep *= -1;
-    printf("xstep == %f\n", xstep);
-    printf("x == %f  y == %f\n", bx, by);
+
     
+    printf("ystep == %f\n", ystep);
+    printf("xstep %f\n", xstep);
     
-    // if (is_facing_right && xstep > 0)
-    //     ystep *= -1;
-    DDA(cub, x0, y0, bx + xstep, by + ystep, 0x087f5b);
         
     while (1)
     {
-        printf("11\n");
+        // printf("11\n");
          
         if (checkRaysMap(cub, bx,by) == EXIT_FAILURE)
-            break;;
+            break;
         // if (cub->map->TrueMap[(int)(by/ 30)][(int)(bx / 30)] == '1')
         //     return (EXIT_SUCCESS);
-        bx += ystep;
-        by += xstep;
+        bx += xstep;
+        by += ystep;
     }
+    DDA(cub, x0, y0, bx, by, 0x087f9b);
     return (EXIT_SUCCESS);
 }
         
