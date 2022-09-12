@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/11 13:06:20 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/11 19:15:43 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,15 @@ int checkRaysMap(t_cub *cub, double bx, double by)
     y = floor(by / 30);
     leny = retlen(cub->map->TrueMap);
     if (y < 0 || y > leny)
-    {
-        printf("222\n");   
         return (EXIT_FAILURE);
-    }
     if ((cub->map->TrueMap[y]))
         lenx = ft_strlen(cub->map->TrueMap[y]);
     else
         return (EXIT_FAILURE);
     if (x < 0 || x > lenx)
-    {
-        printf("ah\n");  
         return (EXIT_FAILURE);
-    }
-    if (cub->map->TrueMap[y][x] == '1')
-    {
-        printf("3333\n");   
+    if ((cub->map->TrueMap[y][x] == '1') ||  (cub->map->TrueMap[y][x] == ' '))
         return (EXIT_FAILURE);
-    }
     return (EXIT_SUCCESS);
 }
 
@@ -73,28 +64,27 @@ int stepHorizontale(t_cub *cub, double rd, double x0, double y0)
     bx = (by - y0) / tan(rd) + x0;
     ystep = 30;
     if (is_facing_up)
+    {
         ystep *= -1;
+        by -= 0.2;
+    }
     xstep = ystep / tan(rd);
-    // printf("x stp == %f\n", xstep);
-    // if (is_facing_right && xstep < 0)
-    //     xstep *= -1;
-    // if (is_facing_left && xstep > 0)
-    //     xstep *= -1;
+    if (is_facing_right && xstep < 0)
+        xstep *= -1;
+    if (is_facing_left && xstep > 0)
+        xstep *= -1;
+
+    // bx -= 0.2;
     while (1)
     {
         if (checkRaysMap(cub, bx,by) == EXIT_FAILURE)
             break;
-        // if (cub->map->TrueMap[(int)(by/ 30)][(int)(bx / 30)] == '1')
-        //     return (EXIT_SUCCESS);
         by += ystep;
         bx += xstep;
     }
-    // DDA(cub, x0, y0, bx, by  , 0x087f5b);
-    // printf("xh == %f  yh == %f\n", bx, by);
-    // cub->hv.xh = bx;
-    // cub->hv.yh = by;
-    // printf("x %f\n", bx);
-    // printf("y %f\n", by);
+    cub->hv.xh = bx;
+    cub->hv.yh = by;
+    
     return (EXIT_SUCCESS);
 }
 
@@ -114,52 +104,64 @@ int stepvertical(t_cub *cub, double rd, double x0, double y0)
         bx += 30;
     by = y0 + (tan(rd) * (bx - x0));
     xstep = 30;
-    // printf("rd _v == %f\n", rd);
     if (is_facing_left)
+    {
         xstep *= -1;
+        bx -= 0.2; 
+    }
     ystep = xstep * tan(rd);
     if (is_facing_up && (ystep > 0))
         ystep *= -1;
     if (is_facing_down && (ystep < 0))
-        ystep *= -1;
-
-    
-    printf("ystep == %f\n", ystep);
-    printf("xstep %f\n", xstep);
-    
-        
+        ystep *= -1;   
+     
+    //  printf("bx == %f  by == %f\n", bx,by);
+    //  printf("bx == %f  by == %f\n", bx / 30,by/30);
+    //  printf("%c\n", cub->map->TrueMap[10][24]);
     while (1)
     {
-        // printf("11\n");
-         
         if (checkRaysMap(cub, bx,by) == EXIT_FAILURE)
             break;
-        // if (cub->map->TrueMap[(int)(by/ 30)][(int)(bx / 30)] == '1')
-        //     return (EXIT_SUCCESS);
         bx += xstep;
         by += ystep;
     }
-    DDA(cub, x0, y0, bx, by, 0x087f9b);
+    cub->hv.xv = bx;
+    cub->hv.yv = by;
+    // DDA(cub, x0, y0, bx, by, 0xe3e305);
     return (EXIT_SUCCESS);
 }
+
+void calculDistance(t_cub *cub, double x0, double y0)
+{
+    double dv;
+    double dh;
+
+    dv = sqrt((pow(cub->hv.xv - x0, 2) + pow(cub->hv.yv - y0, 2)));
+    
+    dh = sqrt((pow(cub->hv.xh - x0, 2) + pow(cub->hv.yh - y0, 2)));
+    if (dv > dh)
+    {
+        cub->hv.x = cub->hv.xh;
+        cub->hv.y = cub->hv.yh;
+    }
+    else
+    {
+        cub->hv.x = cub->hv.xv;
+        cub->hv.y = cub->hv.yv; 
+    }
+    
+}
+ 
         
 void checkWall (t_cub *cub,double x0, double y0, double rd)
 {
-    
-    
     stepHorizontale(cub,rd,x0, y0);
-    printf("00\n");
-    stepvertical(cub, rd, x0, y0);
-    
+    stepvertical(cub, rd, x0, y0); 
+    calculDistance(cub, x0, y0);
 }
-
-
-
 
 void FieldOfView(t_cub *cub)
 {
-    
-
     double rd = cub->player.rotate - ((cub->fov * (M_PI / 180)) / 2);
     
     double fov_inc = cub->fov * (M_PI / 180)  / cub->rx;
@@ -174,11 +176,11 @@ void FieldOfView(t_cub *cub)
             rd += 2 * M_PI;
         x1 = x0  + cos(rd) * 100;
         y1 = y0  + sin(rd) * 100;
-        DDA(cub, x0, y0, x1, y1, 0xe3e305);
-        checkWall(cub,x0, y0, rd); 
-        // rayc(cub, x0 , y0, rd);
+        // DDA(cub, x0, y0, x1, y1, 0xe3e305);
+        checkWall(cub,x0, y0, rd);
+        DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
         rd += fov_inc;
-        break;
+        // break;
         i++;
     }
     
