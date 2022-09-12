@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:13:36 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 16:55:50 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/12 19:10:31 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
     
 	char	*dst;
 
-    if (x < 0 || x > 1024)
+    if (x < 0 || x > 1080)
         return;
-    if (y < 0 || y > 1024)
+    if (y < 0 || y > 1080)
         return;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
@@ -76,26 +76,40 @@ void CheckPrintTrueMap(t_cub *cub)
         y++;
     }    
 }
+unsigned long createRGB(int r, int g, int b)
+{   
+    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+}
+
 
 int update (t_cub *cub)
 {
-    double x,y,j,i;
-    x = cub->player.x * 30;
-    y = cub->player.y * 30;
-    i = y + 5;
-    j = x + 10;
-    CheckPrintTrueMap(cub);
-    // while (y < i)
-    // {
-    //     x = cub->player.x * 30;
-    //     while (x < j)
-    //     {
-    //         my_mlx_pixel_put(&cub->data, x, y, 1825500);
-    //         x++;
-    //     }
-    //     y++;
-    // }
-    ddaALGO(cub);
+    unsigned long clr = createRGB(cub->map->C.R, cub->map->C.G, cub->map->C.B);
+    // ddaALGO(cub);
+    int y = cub->ry / 2;
+    int i = 0;
+    int j;
+    while (i  < y)
+    {
+        j = 0;
+        while (j < cub->rx)
+        {
+            my_mlx_pixel_put(&cub->data,j, i, clr);
+            j++;
+        }
+        i++;
+    }
+    
+    while (i < cub->ry)
+    {
+        j = 0;
+        while (j < cub->rx)
+        {
+            my_mlx_pixel_put(&cub->data,j, i, 0x2201000);
+            j++;    
+        }
+        i++;
+    }
     FieldOfView(cub);
     mlx_put_image_to_window(cub->mlx, cub->win,cub->data.img ,0, 0 );
     return (0);

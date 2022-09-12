@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 16:52:09 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/12 18:35:33 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void ft_iniit(t_cub *cub)
     cub->rx = 1080;
     cub->ry = 1080;
     cub->fov = 60 ;
-    cub->player.x = cub->map->posX ;
-    cub->player.y = cub->map->posY ;
+    cub->player.x = cub->map->posX + 0.3;
+    cub->player.y = cub->map->posY  +0.5  ;
     InitRotate(cub);
     cub->x = 0;
     cub->y = 0;

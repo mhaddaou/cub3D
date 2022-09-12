@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/02 13:09:37 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:48:59 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char *argv[])
 	cub.map = CheckMap(&map);
 
     CheckEmptyPath(&map);
-    CheckEmptyPath(&map);
+    // CheckEmptyPath(&map);
 	GetTrueMap(&cub);
 	CheckTrueMap(&cub);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 16:56:08 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/12 18:21:29 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void FieldOfView(t_cub *cub)
         y1 = y0  + sin(rd) * 100;
         // DDA(cub, x0, y0, x1, y1, 0xe3e305);
         checkWall(cub,x0, y0, rd, i);
-        DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
+        // DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
         rd += fov_inc;
         // break;
         i++;
