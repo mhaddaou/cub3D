@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/09 11:52:11 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/12 16:52:09 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int checkMV2(int key, t_cub *cub)
     
 }
 
+
 void ft_mlx(t_cub *cub)
 {
     ft_iniit(cub);
@@ -116,3 +117,4 @@ void ft_mlx(t_cub *cub)
     mlx_loop(cub->mlx);
     
 }
+

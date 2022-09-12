@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 12:49:49 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/12 16:56:08 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,15 +130,41 @@ int stepvertical(t_cub *cub, double rd, double x0, double y0)
     // DDA(cub, x0, y0, bx, by, 0xe3e305);
     return (EXIT_SUCCESS);
 }
-void Convert3D(t_cub *cub, double distray)
+
+void draw_column(int x, int y, int color, t_cub *cub, double colHeight)
+{
+    int i;
+    int j;
+    int clr;
+
+    i = 0;
+    j = 0;
+    clr = 0;
+    while (i < colHeight)
+    {
+        while (j < 1)
+        {
+            clr = color;
+            my_mlx_pixel_put (&cub->data , (x + j), (y + i), clr);
+            j++;
+        }
+        j = 0;
+        i++;
+    }
+}
+
+void Convert3D(t_cub *cub, double distray, double rd, int column_id)
 {
     double distProjectPlane;
     double wallHeight;
-    distProjectPlane = (30 / 2) / tan(cub->fov / 2);
-    wallHeight = (30 / distray) * distProjectPlane; 
+
+    distProjectPlane = (30 / 2) / tan((cub->fov / 2) * (M_PI / 180));
+    distray = distray * cos(rd  - cub->player.rotate);
+    wallHeight = (30 / distray) * distProjectPlane * 30;
+    draw_column(column_id, (cub->rx / 2) - (wallHeight / 2), 0x862e9c, cub, wallHeight);
 }
 
-void calculDistance(t_cub *cub, double x0, double y0)
+void calculDistance(t_cub *cub, double x0, double y0, double rd, int i)
 {
     double dv;
     double dh;
@@ -149,23 +175,22 @@ void calculDistance(t_cub *cub, double x0, double y0)
     {
         cub->hv.x = cub->hv.xh;
         cub->hv.y = cub->hv.yh;
-        Convert3D(cub, dh);
+        Convert3D(cub, dh, rd, i);
     }
     else
     {
         cub->hv.x = cub->hv.xv;
         cub->hv.y = cub->hv.yv;
-        Convert3D(cub, dv);
+        Convert3D(cub, dv, rd, i);
     }
     
 }
  
-        
-void checkWall (t_cub *cub,double x0, double y0, double rd)
+void checkWall (t_cub *cub, double x0, double y0, double rd, int i)
 {
     stepHorizontale(cub,rd,x0, y0);
     stepvertical(cub, rd, x0, y0); 
-    calculDistance(cub, x0, y0);
+    calculDistance(cub, x0, y0, rd, i);
 }
 
 void FieldOfView(t_cub *cub)
@@ -179,19 +204,20 @@ void FieldOfView(t_cub *cub)
     int i = 0;
     while (i  < cub->rx)
     {
+        // printf("hello\n");
         rd = fmod(rd, 2 * M_PI);
         if (rd < 0)
             rd += 2 * M_PI;
         x1 = x0  + cos(rd) * 100;
         y1 = y0  + sin(rd) * 100;
         // DDA(cub, x0, y0, x1, y1, 0xe3e305);
-        checkWall(cub,x0, y0, rd);
-        // DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
+        checkWall(cub,x0, y0, rd, i);
+        DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
         rd += fov_inc;
         // break;
         i++;
     }
-    
+    mlx_put_image_to_window(cub->mlx, cub->win, cub->data.img, 0, 0);
 }
 
 void raycasting(t_cub *cub)
