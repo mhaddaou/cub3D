@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/11 19:15:43 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:49:49 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,13 @@ int stepvertical(t_cub *cub, double rd, double x0, double y0)
     // DDA(cub, x0, y0, bx, by, 0xe3e305);
     return (EXIT_SUCCESS);
 }
+void Convert3D(t_cub *cub, double distray)
+{
+    double distProjectPlane;
+    double wallHeight;
+    distProjectPlane = (30 / 2) / tan(cub->fov / 2);
+    wallHeight = (30 / distray) * distProjectPlane; 
+}
 
 void calculDistance(t_cub *cub, double x0, double y0)
 {
@@ -137,17 +144,18 @@ void calculDistance(t_cub *cub, double x0, double y0)
     double dh;
 
     dv = sqrt((pow(cub->hv.xv - x0, 2) + pow(cub->hv.yv - y0, 2)));
-    
     dh = sqrt((pow(cub->hv.xh - x0, 2) + pow(cub->hv.yh - y0, 2)));
     if (dv > dh)
     {
         cub->hv.x = cub->hv.xh;
         cub->hv.y = cub->hv.yh;
+        Convert3D(cub, dh);
     }
     else
     {
         cub->hv.x = cub->hv.xv;
-        cub->hv.y = cub->hv.yv; 
+        cub->hv.y = cub->hv.yv;
+        Convert3D(cub, dv);
     }
     
 }
@@ -178,7 +186,7 @@ void FieldOfView(t_cub *cub)
         y1 = y0  + sin(rd) * 100;
         // DDA(cub, x0, y0, x1, y1, 0xe3e305);
         checkWall(cub,x0, y0, rd);
-        DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
+        // DDA(cub, x0, y0, cub->hv.x, cub->hv.y,0xbac8ff);
         rd += fov_inc;
         // break;
         i++;
