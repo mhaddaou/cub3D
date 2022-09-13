@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 18:48:59 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/13 20:43:13 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_cub	cub;
+	t_cub cub;
 	t_map	map;
 	char	*file_name;
 

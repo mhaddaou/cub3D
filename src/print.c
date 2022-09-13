@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:13:36 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 19:10:31 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:48:34 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
     
-	char	*dst;
-
     if (x < 0 || x > 1080)
         return;
     if (y < 0 || y > 1080)
         return;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	data->addr[y * 1080 + x] = color;
 }
+
 
 void printMap(t_cub *cub,int x, int y, int color)
 {
@@ -56,18 +54,18 @@ void CheckPrintTrueMap(t_cub *cub)
         {
             if (cub->map->TrueMap[y][x] == '1')
             {
-                i = y * 30;
-                j = x * 30;
-                cub->x = j + 30;
-                cub->y = i + 30;
+                i = y * TILE_SIZE/ 3;
+                j = x * TILE_SIZE/ 3;
+                cub->x = j + TILE_SIZE/ 3;
+                cub->y = i + TILE_SIZE/ 3;
                 printMap(cub, j, i, 0x8a2be2);
             }
             if (cub->map->TrueMap[y][x] == '0')
             {
-                i = y * 30;
-                j = x * 30;
-                cub->x = j + 30;
-                cub->y = i + 30;
+                i = y * TILE_SIZE/ 3;
+                j = x * TILE_SIZE/ 3;
+                cub->x = j + TILE_SIZE/ 3;
+                cub->y = i + TILE_SIZE/ 3;
                 printMap(cub, j, i, 0xf5f9ff);
             }
             x++;
@@ -84,8 +82,10 @@ unsigned long createRGB(int r, int g, int b)
 
 int update (t_cub *cub)
 {
-    unsigned long clr = createRGB(cub->map->C.R, cub->map->C.G, cub->map->C.B);
-    // ddaALGO(cub);
+    
+    
+    // // ddaALGO(cub);
+    // CheckPrintTrueMap(cub);
     int y = cub->ry / 2;
     int i = 0;
     int j;
@@ -94,7 +94,7 @@ int update (t_cub *cub)
         j = 0;
         while (j < cub->rx)
         {
-            my_mlx_pixel_put(&cub->data,j, i, clr);
+            my_mlx_pixel_put(&cub->data,j, i, 0x00ffff);
             j++;
         }
         i++;
@@ -105,12 +105,30 @@ int update (t_cub *cub)
         j = 0;
         while (j < cub->rx)
         {
-            my_mlx_pixel_put(&cub->data,j, i, 0x2201000);
+            my_mlx_pixel_put(&cub->data,j, i, 0x6C4F3D);
             j++;    
         }
         i++;
     }
+    //  double x,y,j,i;
+    // x = cub->player.x * 30;
+    // y = cub->player.y * 30;
+    // i = y + 10;
+    // j = x + 10;
+    // while (y < i)
+    // {
+    //     x = cub->player.x * 30;
+    //     while (x < j)
+    //     {
+    //         my_mlx_pixel_put(&cub->data, x, y, 1825500);
+    //         x++;
+    //     }
+    //     y++;
+    // }
+    getTexture(cub);
     FieldOfView(cub);
+    CheckPrintTrueMap(cub);
+    FieldOfViewmini(cub);
     mlx_put_image_to_window(cub->mlx, cub->win,cub->data.img ,0, 0 );
     return (0);
 }

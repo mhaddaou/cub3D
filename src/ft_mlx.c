@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/12 18:35:33 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:05:32 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void ft_mlx(t_cub *cub)
     cub->mlx = mlx_init();
     cub->win = mlx_new_window(cub->mlx, cub->rx, cub->ry, "mhaddaou && izail");
 	cub->data.img = mlx_new_image(cub->mlx, cub->rx, cub->ry);
-	cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel, &cub->data.line_length,
+	cub->data.addr = (int *)mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel, &cub->data.line_length,
 								&cub->data.endian);
     update(cub);
     // mlx_loop_hook(cub->mlx, &update, cub);

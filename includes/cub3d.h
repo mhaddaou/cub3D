@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/10 16:52:59 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:44:53 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define RGT (124)
 # define VALIDE (0)
 # define NVALIDE (1)
+# define TILE_SIZE 30
 
 typedef struct s_color
 {
@@ -53,11 +54,24 @@ typedef struct s_color
 
 typedef struct	s_data {
 	void	*img;
-	char	*addr;
+	int		*addr;
+	void 	*img2;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_data2 {
+	void	*img;
+	int	*addr;
+	void 	*img2;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int width;
+	
+	int height;
+}				t_data2;
 
 typedef struct s_hv
 {
@@ -101,6 +115,15 @@ typedef struct s_ray
 	int r;
 } t_ray;
 
+typedef struct s_texture
+{
+	void	*img;
+	int		*addr;
+	int height;
+	int width;
+}	t_texture;
+
+
 typedef struct s_map
 {
 	t_color F;
@@ -140,6 +163,7 @@ typedef struct s_cub
 	int ry;
 	int x;
 	int y;
+	int l;
 	int fov;
 	t_hv hv;	
 	t_keys key;
@@ -147,7 +171,11 @@ typedef struct s_cub
 	void	*img_ground;
 	double	stepx;
 	double	stepy;
+	t_data2 data2[4];
 	t_player player;
+	double xt;
+	double yt;
+	
 	int		move_p;
 	t_ray ray;
 	char check;
@@ -203,4 +231,9 @@ void RotateRight(t_cub *cub);
 void FieldOfView(t_cub *cub);
 void raycasting(t_cub *cub);
 int lenss(char ** str);
+void getTexture(t_cub *cub);
+void getAddrTexture(t_cub *cub);
+void	my_mlx_pixel_put2(t_data2 *data2, int x, int y, int color);
+int ret_color(t_cub *cub, int x);
+void FieldOfViewmini(t_cub *cub);
 #endif
