@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/13 22:44:53 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/14 06:46:14 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct s_hv
 	double xv;
 	double yv;
 	double x;
+	double ysteph;
+	double xstepv;
+	
 	double y;
 }	t_hv;
 
@@ -171,7 +174,16 @@ typedef struct s_cub
 	void	*img_ground;
 	double	stepx;
 	double	stepy;
-	t_data2 data2[4];
+	t_data2 data1;
+	t_data2 data2;
+	t_data2 data3;
+	t_data2 data4;
+	double wallHeight;
+	double distProjectPlane;
+	double x_offset;
+	int start;
+	int end;
+    double y_offset;
 	t_player player;
 	double xt;
 	double yt;
@@ -236,4 +248,14 @@ void getAddrTexture(t_cub *cub);
 void	my_mlx_pixel_put2(t_data2 *data2, int x, int y, int color);
 int ret_color(t_cub *cub, int x);
 void FieldOfViewmini(t_cub *cub);
+int stepHorizontale(t_cub *cub, double rd, double x0, double y0);
+int stepvertical(t_cub *cub, double rd, double x0, double y0);
+int checkRaysMap(t_cub *cub, double bx, double by);
+int retlen(char **str);
+void checkWallmini (t_cub *cub, double x0, double y0, double rd, int i);
+void checkWalaal (t_cub *cub, double x0, double y0, double rd, int i);
+void calculDistancemini(t_cub *cub, double x0, double y0, double rd, int i);
+void calculDistance(t_cub *cub, double x0, double y0, double rd, int i);
+void Convert3D(t_cub *cub, double distray, double rd, int column_id, char c);
+void drawTexture(t_cub *cub, char c, int column_id, int order);
 #endif
