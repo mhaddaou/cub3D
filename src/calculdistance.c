@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 04:35:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 07:01:37 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/14 07:12:18 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void calculDistance(t_cub *cub, double x0, double y0, double rd, int i)
         else if (cub->hv.xstepv < 0)
             drawTexture(cub, 'v',i, 2);
     }
-    
 }
 void calculDistancemini(t_cub *cub, double x0, double y0, double rd, int i)
 {

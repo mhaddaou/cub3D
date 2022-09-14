@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/13 22:05:32 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/14 07:13:22 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,9 @@ void ft_mlx(t_cub *cub)
 	cub->data.addr = (int *)mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel, &cub->data.line_length,
 								&cub->data.endian);
     update(cub);
-    // mlx_loop_hook(cub->mlx, &update, cub);
-    // mlx_key_hook(cub->win, &mouve, cub);
     mlx_hook(cub->win, 2, 0, &checkMV, cub);
     mlx_hook(cub->win, 3, 0, &checkMV2, cub);
     mlx_loop_hook(cub->mlx, &mouve, cub);
-    // mlx_clear_window(cub->mlx, cub->win);
     
     mlx_loop(cub->mlx);
     
