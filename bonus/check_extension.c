@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   check_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 06:02:07 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 14:41:59 by izail            ###   ########.fr       */
+/*   Created: 2022/02/13 03:34:28 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
-void	ft_free(char **map)
+int	check_extension(char *file_name)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	while (map[i])
-	{
-		if (map[i] != NULL)
-			free(map[i]);
-		map[i] = NULL;
-		i++;
-	}
-	if (map)
-		free(map);
-	map = NULL;
-}
-
-void	ft_free1(t_map *map)
-{
-	free(map->ar);
-	free(map->ar2);
-	free(map->number);
+	len = ft_strlen(file_name);
+	if (file_name[len - 4] == '.')
+		if (file_name[len - 3] == 'c')
+			if (file_name[len - 2] == 'u')
+				if (file_name[len - 1] == 'b')
+					return (0);
+	return (-1);
 }

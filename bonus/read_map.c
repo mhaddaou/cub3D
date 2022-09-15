@@ -6,11 +6,11 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:25:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 16:51:41 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 int	count_line(int fd)
 {

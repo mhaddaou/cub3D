@@ -6,11 +6,11 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:41:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:36:25 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/14 18:42:28 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 int	check_empty_line(char *line)
 {

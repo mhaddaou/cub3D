@@ -6,11 +6,11 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 06:02:07 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 14:41:59 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	ft_free(char **map)
 {

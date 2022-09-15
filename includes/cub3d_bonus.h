@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:54:41 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/14 18:23:15 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdbool.h>
 # include <stdio.h>
@@ -272,7 +272,7 @@ int		check_rays_map(t_cub *cub, double bx, double by);
 int		retlen(char **str);
 void	check_wall_mini(t_cub *cub, double x0, double y0, double rd);
 void	check_wall(t_cub *cub, double x0, double y0, double rd);
-void	calcul_distancemini(t_cub *cub, double x0, double y0, double rd);
+void	calcul_distancemini(t_cub *cub, double x0, double y0);
 void	calcul_distance(t_cub *cub, double x0, double y0, double rd);
 void	convert_3d(t_cub *cub, double distray, double rd);
 void	draw_texture(t_cub *cub, char c, int column_id, int order);

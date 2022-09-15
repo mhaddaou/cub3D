@@ -6,11 +6,11 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:09:43 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 17:49:34 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	move_left(t_cub *cub)
 {

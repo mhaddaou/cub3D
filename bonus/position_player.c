@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   position_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 06:02:07 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 14:41:59 by izail            ###   ########.fr       */
+/*   Created: 2022/02/26 20:49:15 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
-void	ft_free(char **map)
+void	position_player(t_cub *cub)
 {
-	int	i;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (map[i])
+	y = 0;
+	cub->player.x = 0;
+	cub->player.y = 0;
+	while (y < cub->map->map_height)
 	{
-		if (map[i] != NULL)
-			free(map[i]);
-		map[i] = NULL;
-		i++;
+		x = 0;
+		while (cub->map->map[y][x])
+		{
+			if (cub->map->map[y][x] == 'P')
+			{
+				cub->player.x = x;
+				cub->player.y = y;
+			}
+			x++;
+		}
+		y++;
 	}
-	if (map)
-		free(map);
-	map = NULL;
-}
-
-void	ft_free1(t_map *map)
-{
-	free(map->ar);
-	free(map->ar2);
-	free(map->number);
 }
