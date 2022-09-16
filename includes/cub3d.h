@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:54:41 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 20:48:45 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
-# include "../library/library.h"
+// # include "../library/library.h"
+# include "gnl/get_next_line.h"
+# include "libft/libft.h"
 
+# define BUFFER_SIZE (10)
 # define XY (2)
 # define TEXTURES (5)
 # define DN (0)
@@ -218,6 +221,7 @@ int		open_count_line(char *file_name);
 int		count_line(int fd);
 void	ft_free(char **map);
 void	err_hand(int err);
+void	err_hand2(int err);
 void	ft_init(t_cub *cub);
 void	init_color(t_map *map);
 int		ft_lent(t_cub *cub);
@@ -287,5 +291,17 @@ void	check_print_true_map2(t_cub *cub, int x, int y);
 int		check_empty_line(char *line);
 void	print_flor_ciel(t_cub *cub);
 void	free_and_exit(t_cub *cub);
+void	calcul_element(t_cub *cub);
+void	check_walls(char **str);
+void	check_last_line(char **str);
+void	check_first_line(char **str);
 
+
+char    **ft_read_map(t_map *map, char *path);
+// char	*check_read(char *line, char *holder);
+void	ft_free_line(char *line, char *holder);
+char	**map_alloc(t_map *map, char *line);
+char	*word_dup(char *str, int start, int finish);
+char	**fill_map(char *line, t_map *map);
+char	*check_line_read(char *line, char *holder);
 #endif

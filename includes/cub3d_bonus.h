@@ -20,7 +20,6 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
-# include "../library/library.h"
 
 # define XY (2)
 # define TEXTURES (5)

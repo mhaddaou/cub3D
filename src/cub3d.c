@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 14:49:58 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 20:59:42 by izail            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	file_name = argv[1];
-	map.map = read_map(file_name);
-	map.map_height = open_count_line(file_name);
+	map.map = ft_read_map(&map,file_name);
 	init(&map);
 	cub.map = check_map(&map);
 	check_empty_path(&map);
