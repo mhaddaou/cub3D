@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 23:08:38 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 00:14:06 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,7 @@ void	calcul_element(t_cub *cub);
 void	check_walls(char **str);
 void	check_last_line(char **str);
 void	check_first_line(char **str);
-
+void	check_ar(char *str);
 
 char    **ft_read_map(t_map *map, char *path);
 // char	*check_read(char *line, char *holder);
