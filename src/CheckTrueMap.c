@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 17:52:11 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 22:35:48 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,16 @@ void	check_walls(char **str)
 	}
 }
 
+void check_is_empty(char **str)
+{
+	if (!str)
+		printf("ahh\n");
+}
+
+
 void	check_true_map(t_cub *cub)
 {
+	check_is_empty(cub->map->truemap);
 	check_first_line(cub->map->truemap);
 	check_last_line(cub->map->truemap);
 	check_walls(cub->map->truemap);

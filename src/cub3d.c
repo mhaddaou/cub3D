@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:51:14 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 20:59:42 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 21:38:35 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int	main(int argc, char *argv[])
 	}
 	file_name = argv[1];
 	map.map = ft_read_map(&map,file_name);
+	int i = 0;
+	while (map.map[i])
+	{
+		printf("%s\n", map.map[i]);
+		i++;
+	}
 	init(&map);
 	cub.map = check_map(&map);
 	check_empty_path(&map);
