@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:13:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:47:04 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 23:17:48 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_mv2(int key, t_cub *cub)
 	if (key == S)
 		cub->key.s = 0;
 	if (key == ESC)
-		exit(0);
+		free_and_exit(cub);
 	if (key == LFT)
 		cub->key.rl = 0;
 	if (key == RGT)
@@ -77,6 +77,7 @@ void	ft_mlx(t_cub *cub)
 			&cub->data.bits_per_pixel, &cub->data.line_length,
 			&cub->data.endian);
 	update(cub);
+	mlx_hook(cub->win, 17, 0, free_and_exit, cub);
 	mlx_hook(cub->win, 2, 0, &check_mv, cub);
 	mlx_hook(cub->win, 3, 0, &check_mv2, cub);
 	mlx_loop_hook(cub->mlx, &move, cub);

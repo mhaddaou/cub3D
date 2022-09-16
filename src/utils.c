@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 12:16:50 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:53:07 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 23:18:31 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	checkcolor(char *str)
 	checkcolorrange(ft_atoi(str));
 }
 
-void	free_and_exit(t_cub *cub)
+int	free_and_exit(t_cub *cub)
 {
 	int	i;
 

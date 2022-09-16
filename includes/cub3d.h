@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 20:48:45 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/16 23:08:38 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ void	err_hand2(int err);
 void	check_print_true_map2(t_cub *cub, int x, int y);
 int		check_empty_line(char *line);
 void	print_flor_ciel(t_cub *cub);
-void	free_and_exit(t_cub *cub);
+int		free_and_exit(t_cub *cub);
 void	calcul_element(t_cub *cub);
 void	check_walls(char **str);
 void	check_last_line(char **str);
