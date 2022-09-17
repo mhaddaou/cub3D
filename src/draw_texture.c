@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:34:25 by izail             #+#    #+#             */
-/*   Updated: 2022/09/14 17:54:43 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/17 22:36:55 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_text_order4(t_cub *cub, char c, int column_id)
+void check_h_or_v(t_cub *cub, char c)
 {
-	int	dist;
-	int	y;
-
 	if (c == 'h')
 	{
 		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
@@ -27,8 +24,21 @@ void	draw_text_order4(t_cub *cub, char c, int column_id)
 		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
 		cub->x_offset = cub->x_offset * cub->data4.width;
 	}
+	
+}
+
+void	draw_text_order4(t_cub *cub, char c, int column_id)
+{
+	int	dist;
+	int	y;
+	
+	check_h_or_v(cub, c);
 	cub->start = (cub->ry / 2) - (cub->wall_height / 2);
+	if (cub->start < 0)
+		cub->start = 0;
 	cub->end = (cub->ry / 2) + (cub->wall_height / 2);
+	if (cub->end > cub->ry)
+		cub->end = cub->ry;
 	y = cub->start;
 	while (y < cub->end)
 	{
@@ -46,19 +56,14 @@ void	draw_text_order1(t_cub *cub, char c, int column_id)
 	int	dist;
 	int	y;
 
-	if (c == 'h')
-	{
-		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data1.width;
-	}
-	else
-	{
-		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data1.width;
-	}
+	check_h_or_v(cub, c);
 	cub->start = (cub->ry / 2) - (cub->wall_height / 2);
 	cub->end = (cub->ry / 2) + (cub->wall_height / 2);
+	if (cub->start < 0)
+		cub->start = 0;
 	y = cub->start;
+	if (cub->end > cub->ry)
+		cub->end = cub->ry;
 	while (y < cub->end)
 	{
 		dist = y + (cub->wall_height / 2) - (cub->ry / 2);
@@ -75,19 +80,14 @@ void	draw_text_order2(t_cub *cub, char c, int column_id)
 	int	dist;
 	int	y;
 
-	if (c == 'h')
-	{
-		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data2.width;
-	}
-	else
-	{
-		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data2.width;
-	}
+	check_h_or_v(cub, c);
 	cub->start = (cub->ry / 2) - (cub->wall_height / 2);
 	cub->end = (cub->ry / 2) + (cub->wall_height / 2);
+	if (cub->start < 0)
+		cub->start = 0;
 	y = cub->start;
+	if (cub->end > cub->ry)
+		cub->end = cub->ry;
 	while (y < cub->end)
 	{
 		dist = y + (cub->wall_height / 2) - (cub->ry / 2);
@@ -104,19 +104,14 @@ void	draw_text_order3(t_cub *cub, char c, int column_id)
 	int	dist;
 	int	y;
 
-	if (c == 'h')
-	{
-		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data3.width;
-	}
-	else
-	{
-		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data3.width;
-	}
+	check_h_or_v(cub, c);
 	cub->start = (cub->ry / 2) - (cub->wall_height / 2);
 	cub->end = (cub->ry / 2) + (cub->wall_height / 2);
+	if (cub->start < 0)
+		cub->start = 0;
 	y = cub->start;
+	if (cub->end > cub->ry)
+		cub->end = cub->ry;
 	while (y < cub->end)
 	{
 		dist = y + (cub->wall_height / 2) - (cub->ry / 2);

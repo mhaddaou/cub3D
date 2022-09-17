@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:07:47 by izail             #+#    #+#             */
-/*   Updated: 2022/09/14 17:47:14 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/17 22:37:34 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_rotate(t_cub *cub)
 	if (cub->map->direction == 'n')
 		cub->player.rotate = (1.5 * M_PI);
 	if (cub->map->direction == 's')
-		cub->player.rotate = (M_PI / 2);
+		cub->player.rotate = (M_PI / 2) - 0.001;
 	if (cub->map->direction == 'w')
 		cub->player.rotate = M_PI;
 	if (cub->map->direction == 'e')

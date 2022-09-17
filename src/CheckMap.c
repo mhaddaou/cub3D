@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:47:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 01:57:21 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 22:43:18 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_line(t_map *map, int i)
 	j = 0;
 	if (check_empty_line(map->map[i]) == EXIT_FAILURE)
 		return ;
-	while (map->map[i][j] == ' ' || map->map[i][j])
+	while (map->map[i][j] == ' ')
 		j++;
 	while (map->map[i][j] != ' ' && map->map[i][j])
 	{

@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 22:35:48 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:08:40 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ void	check_first_line(char **str)
 
 void	check_last_line(char **str)
 {
+	
 	int	i;
 	int	len;
 
+	
 	i = 0;
 	len = 0;
 	while (str[len])
@@ -80,23 +82,17 @@ void	check_walls(char **str)
 	}
 }
 
-void check_is_empty(char **str)
-{
-	if (!str)
-		printf("ahh\n");
-}
-
 
 void	check_true_map(t_cub *cub)
 {
-	check_is_empty(cub->map->truemap);
+	cub->map_height = calcule_true_map(cub);
+	init_side(cub);
+	check_objects(cub);
+	// check_is_empty(cub->map->truemap);
 	check_first_line(cub->map->truemap);
 	check_last_line(cub->map->truemap);
 	check_walls(cub->map->truemap);
-	init_side(cub);
-	check_objects(cub);
 	get_position_player(cub);
-	cub->map_height = calcule_true_map(cub);
 	check_inside_map(cub);
 	ft_mlx(cub);
 }

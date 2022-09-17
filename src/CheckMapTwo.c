@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:41:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 01:59:31 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 18:15:58 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	check_empty_line(char *line)
 
 void	check_short_name_two(t_map *map, char *str)
 {
-	if (!ft_strncmp(str, "EA", 3))
+	if (!ft_strncmp(str, "EA", ft_strlen(str)))
 	{
 		get_info(map, 'E');
 		map->e++;
 	}
-	else if (!ft_strncmp(str, "F", 2))
+	else if (!ft_strncmp(str, "F", ft_strlen(str)))
 	{
 		get_info(map, 'F');
 		map->f++;
 	}
-	else if (!ft_strncmp(str, "C", 2))
+	else if (!ft_strncmp(str, "C", ft_strlen(str)))
 	{
 		get_info(map, 'C');
 		map->c++;
@@ -47,17 +47,17 @@ void	check_short_name(t_map *map, char *str, int i, int j)
 {
 	map->i = i;
 	map->j = j;
-	if (!ft_strncmp(str, "NO", 3))
+	if (!ft_strncmp(str, "NO", ft_strlen(str)))
 	{
 		get_info(map, 'N');
 		map->n++;
 	}
-	else if (!ft_strncmp(str, "SO", 3))
+	else if (!ft_strncmp(str, "SO", ft_strlen(str)))
 	{
 		get_info(map, 'S');
 		map->s++;
 	}
-	else if (!ft_strncmp(str, "WE", 3))
+	else if (!ft_strncmp(str, "WE", ft_strlen(str)))
 	{
 		get_info(map, 'W');
 		map->w++;

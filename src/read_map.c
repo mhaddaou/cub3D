@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:25:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 20:49:21 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/17 22:44:26 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*check_line_read(char *line, char *holder)
 
 	if (!line)
 	{
-		printf("invalid map!!\n");
+		ft_putstr_fd("Error\n\t Invalid map", 2);
 		free(line);
 		free(holder);
 		exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:55:47 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/16 23:04:24 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:10:40 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	get_true_map(t_cub *cub)
 
 	j = i;
 	while (cub->map->map[j]
-		&& ft_strncmp(cub->map->map[j], "\n", ft_strlen(cub->map->map[j])))
+		&& (ft_strncmp(cub->map->map[j], "\n", ft_strlen(cub->map->map[j]))))
 		j++;
 	initialize_true_map(cub, i, j);
 }
