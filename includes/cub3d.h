@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 00:14:06 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 01:18:24 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,4 +304,6 @@ char	**map_alloc(t_map *map, char *line);
 char	*word_dup(char *str, int start, int finish);
 char	**fill_map(char *line, t_map *map);
 char	*check_line_read(char *line, char *holder);
+void check_extension_texture(t_map *map);
+int check_texture(char *file_name);
 #endif
