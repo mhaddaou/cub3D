@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:41:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 01:10:26 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 01:59:31 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	check_short_name_two(t_map *map, char *str)
 	else
 		err_hand(5);
 }
+
+
+
 
 void	check_short_name(t_map *map, char *str, int i, int j)
 {
