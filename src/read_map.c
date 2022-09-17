@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:25:33 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 22:44:26 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 22:57:48 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,6 @@ char	**ft_read_map(t_map *map, char *path)
 	}
 	return (map->map = map_alloc(map, holder_map), free(holder_map),
 		close(fd), map->map);
-}
-
-
-char	*check_line_read(char *line, char *holder)
-{
-	char	*str;
-
-	if (!line)
-	{
-		ft_putstr_fd("Error\n\t Invalid map", 2);
-		free(line);
-		free(holder);
-		exit(EXIT_FAILURE);
-	}
-	str = ft_strjoin(holder, line);
-	free(line);
-	free(holder);
-	return (str);
-}
-
-void	ft_free_line(char *line, char *holder)
-{
-	free(line);
-	free(holder);
-}
-
-
-char	*word_dup(char *str, int start, int finish)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
 }
 
 char	**map_alloc(t_map *map, char *line)
@@ -148,23 +110,5 @@ int	count_line(int fd)
 			map_height++;
 	}
 	free(buffer);
-	return (map_height);
-}
-
-int	open_count_line(char *file_name)
-{
-	int	fd;
-	int	map_height;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr_fd("Error\n\tThe file can't be open\n", 2);
-		return (EXIT_FAILURE);
-	}
-	map_height = count_line(fd);
-	close(fd);
-	if (map_height == EXIT_FAILURE)
-		return (EXIT_FAILURE);
 	return (map_height);
 }

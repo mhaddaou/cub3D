@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 00:18:16 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 23:03:53 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,12 @@ void	get_g(t_map *map, int i)
 	}
 	get_b(map, i);
 }
-void check_ar22(char *str)
-{
-	int i = 0;
 
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			err_hand2(17);
-		i++;
-	}
-}
-void check_ar(char *str)
+void	check_ar(char *str)
 {
-	int i;
-	int check;
-	
+	int	i;
+	int	check;
+
 	i = 0;
 	check = 0;
 	while (str[i])

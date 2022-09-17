@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:15:38 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 17:14:04 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/17 23:03:28 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ void	dda(t_cub *cub, int x1, int y1)
 		my_mlx_pixel_put(&cub->data, round(x0), round(y0), CFOV);
 		x0 += cub->x_inc;
 		y0 += cub->y_inc;
+		i++;
+	}
+}
+
+void	check_ar22(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			err_hand2(17);
 		i++;
 	}
 }

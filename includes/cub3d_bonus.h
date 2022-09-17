@@ -6,7 +6,7 @@
 /*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:23:15 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/18 00:18:45 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
+# include "gnl/get_next_line.h"
+# include "libft/libft.h"
 
 # define XY (2)
 # define TEXTURES (5)
@@ -39,6 +41,7 @@
 # define VALIDE (0)
 # define NVALIDE (1)
 # define TILE_SIZE 30
+# define BUFFER_SIZE (10)
 
 typedef struct s_color
 {
@@ -217,6 +220,7 @@ int		open_count_line(char *file_name);
 int		count_line(int fd);
 void	ft_free(char **map);
 void	err_hand(int err);
+void	err_hand2(int err);
 void	ft_init(t_cub *cub);
 void	init_color(t_map *map);
 int		ft_lent(t_cub *cub);
@@ -271,7 +275,6 @@ int		check_rays_map(t_cub *cub, double bx, double by);
 int		retlen(char **str);
 void	check_wall_mini(t_cub *cub, double x0, double y0, double rd);
 void	check_wall(t_cub *cub, double x0, double y0, double rd);
-void	calcul_distancemini(t_cub *cub, double x0, double y0);
 void	calcul_distance(t_cub *cub, double x0, double y0, double rd);
 void	convert_3d(t_cub *cub, double distray, double rd);
 void	draw_texture(t_cub *cub, char c, int column_id, int order);
@@ -285,6 +288,26 @@ void	err_hand2(int err);
 void	check_print_true_map2(t_cub *cub, int x, int y);
 int		check_empty_line(char *line);
 void	print_flor_ciel(t_cub *cub);
-void	free_and_exit(t_cub *cub);
-
+int		free_and_exit(t_cub *cub);
+void	calcul_element(t_cub *cub);
+void	check_walls(char **str);
+void	check_last_line(char **str);
+void	check_first_line(char **str);
+void	check_ar(char *str);
+char	**ft_read_map(t_map *map, char *path);
+void	ft_free_line(char *line, char *holder);
+char	**map_alloc(t_map *map, char *line);
+char	*word_dup(char *str, int start, int finish);
+char	**fill_map(char *line, t_map *map);
+char	*check_line_read(char *line, char *holder);
+void	check_extension_texture(t_map *map);
+int		check_texture(char *file_name);
+void	check_h_or_v(t_cub *cub, char c);
+void	print_map(t_cub *cub, int x, int y, int color);
+void	check_print_true_map2(t_cub *cub, int x, int y);
+void	check_print_true_map(t_cub *cub);
+void	calcul_distancemini(t_cub *cub, double x0, double y0);
+void	check_ar22(char *str);
+void	field_of_view(t_cub *cub);
+void	field_of_view_mini(t_cub *cub);
 #endif

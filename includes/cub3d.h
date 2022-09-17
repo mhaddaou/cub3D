@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:25:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 22:33:56 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/18 00:14:29 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
-// # include "../library/library.h"
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
 
@@ -269,14 +268,11 @@ void	gettexture(t_cub *cub);
 void	getaddrtexture(t_cub *cub);
 void	my_mlx_pixel_put2(t_data2 *data2, int x, int y, int color);
 int		ret_color(t_cub *cub, int x);
-void	field_of_view_mini(t_cub *cub);
 int		stephorizontale(t_cub *cub, double rd, double x0, double y0);
 int		stepvertical(t_cub *cub, double rd, double x0, double y0);
 int		check_rays_map(t_cub *cub, double bx, double by);
 int		retlen(char **str);
-void	check_wall_mini(t_cub *cub, double x0, double y0, double rd);
 void	check_wall(t_cub *cub, double x0, double y0, double rd);
-void	calcul_distancemini(t_cub *cub, double x0, double y0, double rd);
 void	calcul_distance(t_cub *cub, double x0, double y0, double rd);
 void	convert_3d(t_cub *cub, double distray, double rd);
 void	draw_texture(t_cub *cub, char c, int column_id, int order);
@@ -296,14 +292,14 @@ void	check_walls(char **str);
 void	check_last_line(char **str);
 void	check_first_line(char **str);
 void	check_ar(char *str);
-
-char    **ft_read_map(t_map *map, char *path);
-// char	*check_read(char *line, char *holder);
+char	**ft_read_map(t_map *map, char *path);
 void	ft_free_line(char *line, char *holder);
 char	**map_alloc(t_map *map, char *line);
 char	*word_dup(char *str, int start, int finish);
 char	**fill_map(char *line, t_map *map);
 char	*check_line_read(char *line, char *holder);
-void check_extension_texture(t_map *map);
-int check_texture(char *file_name);
+void	check_extension_texture(t_map *map);
+int		check_texture(char *file_name);
+void	check_h_or_v(t_cub *cub, char c);
+void	check_ar22(char *str);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetTrueMap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 09:55:47 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	go_to_c(t_map *map, int i, int j)
 
 	x = 0;
 	while (i < j)
-	{
+	{		
 		map->truemap[x] = ft_strdup(map->map[i]);
 		i++;
 		x++;
@@ -39,15 +39,23 @@ void	initialize_true_map(t_cub *cub, int i, int j)
 
 void	get_true_map(t_cub *cub)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	**str;
 
+	str = cub->map->map;
 	i = cub->map->check;
-	while (!ft_strncmp(cub->map->map[i], "\n", ft_strlen(cub->map->map[i])))
+	while (str[i])
+	{
+		if (ft_strncmp(str[i], "\n", ft_strlen(str[i])))
+			break ;
 		i++;
+	}
+	if (!cub->map->map[i])
+		err_hand(0);
 	j = i;
 	while (cub->map->map[j]
-		&& ft_strncmp(cub->map->map[j], "\n", ft_strlen(cub->map->map[j])))
+		&& (ft_strncmp(cub->map->map[j], "\n", ft_strlen(cub->map->map[j]))))
 		j++;
 	initialize_true_map(cub, i, j);
 }

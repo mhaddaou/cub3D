@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetElementC.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:18:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	get_c(t_map *map)
 	int	i;
 
 	i = 0;
+	check_ar(map->ar2);
 	while (map->ar2[i])
 	{
 		if (map->ar2[i] == ',')

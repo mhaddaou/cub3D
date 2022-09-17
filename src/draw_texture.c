@@ -6,32 +6,17 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:34:25 by izail             #+#    #+#             */
-/*   Updated: 2022/09/17 22:36:55 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 23:13:13 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void check_h_or_v(t_cub *cub, char c)
-{
-	if (c == 'h')
-	{
-		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data4.width;
-	}
-	else
-	{
-		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
-		cub->x_offset = cub->x_offset * cub->data4.width;
-	}
-	
-}
-
 void	draw_text_order4(t_cub *cub, char c, int column_id)
 {
 	int	dist;
 	int	y;
-	
+
 	check_h_or_v(cub, c);
 	cub->start = (cub->ry / 2) - (cub->wall_height / 2);
 	if (cub->start < 0)

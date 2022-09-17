@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:55:17 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 18:38:01 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 23:22:36 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,31 @@ int	check_no_so_ea_fc(t_map *map)
 	return (EXIT_FAILURE);
 }
 
-void    check_inside_map(t_cub *cub)
+void	check_inside_map(t_cub *cub)
 {
-    int    i;
-    int    j;
+	int	i;
+	int	j;
 
-    i = 1;
-    while (i < cub->map_height - 1)
-    {
-        j = 1;
-        while (cub->map->truemap[i][j])
-        {
-            if (cub->map->truemap[i][j] == ' ')
-            {
-                if (!((cub->map->truemap[i + 1][j] == '1' || cub->map->truemap[i + 1][j] == ' ')
-                    && (cub->map->truemap[i - 1][j] == '1' || cub->map->truemap[i - 1][j] == ' ')
-                    && (cub->map->truemap[i][j - 1] == '1' || cub->map->truemap[i][j - 1] == ' ')
-                    && (cub->map->truemap[i][j + 1] == '1'||  cub->map->truemap[i][j + 1] == ' ')))
-                        err_hand2(16);
-            }
-            j++;
-        }
-        i++;
-    }
+	i = 1;
+	while (i < cub->map_height - 1)
+	{
+		j = 1;
+		while (cub->map->truemap[i][j])
+		{
+			if (cub->map->truemap[i][j] == ' ')
+			{
+				if (!((cub->map->truemap[i + 1][j] == '1'
+						|| cub->map->truemap[i + 1][j] == ' ')
+							&& (cub->map->truemap[i - 1][j] == '1'
+							|| cub->map->truemap[i - 1][j] == ' ')
+							&& (cub->map->truemap[i][j - 1] == '1'
+							|| cub->map->truemap[i][j - 1] == ' ')
+							&& (cub->map->truemap[i][j + 1] == '1'
+								|| cub->map->truemap[i][j + 1] == ' ')))
+					err_hand2(16);
+			}
+			j++;
+		}
+		i++;
+	}
 }

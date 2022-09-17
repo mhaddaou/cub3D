@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetElementF.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:49 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,30 @@ void	get_g(t_map *map, int i)
 	get_b(map, i);
 }
 
+void	check_ar(char *str)
+{
+	int	i;
+	int	check;
+
+	i = 0;
+	check = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			check++;
+		i++;
+	}
+	if (check != 2)
+		err_hand2(17);
+	check_ar22(str);
+}
+
 void	get_f(t_map *map)
 {
 	int	i;
 
 	i = 0;
+	check_ar(map->ar);
 	while (map->ar[i])
 	{
 		if (map->ar[i] == ',')

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   check_h_or_v.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 14:34:15 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/09/17 23:08:19 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/09/17 23:48:48 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d_bonus.h"
+#include "../includes/cub3d.h"
 
-int	retlen(char **str)
+void	check_h_or_v(t_cub *cub, char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-void	convert_3d(t_cub *cub, double distray, double rd)
-{
-	cub->dist_project_plane
-		= (TILE_SIZE / 2) / tan((cub->fov / 2) * (M_PI / 180));
-	distray = distray * cos(rd - cub->player.rotate);
-	cub->wall_height = (TILE_SIZE / distray)
-		* cub->dist_project_plane * TILE_SIZE;
+	if (c == 'h')
+	{
+		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
+		cub->x_offset = cub->x_offset * cub->data4.width;
+	}
+	else
+	{
+		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
+		cub->x_offset = cub->x_offset * cub->data4.width;
+	}
 }

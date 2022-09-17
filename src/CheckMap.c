@@ -6,7 +6,7 @@
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 09:47:34 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/17 22:43:18 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/09/17 22:59:36 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	check_empty_path(t_map *map)
 	if (!*map->e_texture)
 		err_hand(8);
 }
-int check_texture(char *file_name)
+
+int	check_texture(char *file_name)
 {
 	size_t	len;
 
@@ -56,10 +57,9 @@ int check_texture(char *file_name)
 				if (file_name[len - 1] == 'm')
 					return (EXIT_SUCCESS);
 	return (EXIT_FAILURE);
-	
 }
 
-void check_extension_texture(t_map *map)
+void	check_extension_texture(t_map *map)
 {
 	if (check_texture(map->n_texture) == EXIT_FAILURE)
 		err_hand2(17);

@@ -1,54 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initMap.c                                          :+:      :+:    :+:   */
+/*   check_h_or_v.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 09:31:41 by mhaddaou          #+#    #+#             */
+/*   Created: 2022/09/17 23:08:19 by mhaddaou          #+#    #+#             */
 /*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-void	init_color(t_map *map)
+void	check_h_or_v(t_cub *cub, char c)
 {
-	map->f_c.r = 0;
-	map->f_c.g = 0;
-	map->f_c.b = 0;
-	map->c_c.r = 0;
-	map->c_c.g = 0;
-	map->c_c.b = 0;
-}
-
-void	init_side(t_cub *cub)
-{
-	cub->map->e = 0;
-	cub->map->w = 0;
-	cub->map->n = 0;
-	cub->map->s = 0;
-}
-
-void	init(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	map->n_texture = NULL;
-	map->e_texture = NULL;
-	map->w_texture = NULL;
-	map->s_texture = NULL;
-	map->e = 0;
-	map->w = 0;
-	map->n = 0;
-	map->s = 0;
-	map->f = 0;
-	map->c = 0;
-	map->check = 0;
-	map->number = (char *) malloc(sizeof(char) * 10);
-	if (!map->number)
-		err_hand(1);
-	init_color(map);
-	ft_bzero(map->number, 10);
+	if (c == 'h')
+	{
+		cub->x_offset = cub->hv.x / TILE_SIZE - (int)(cub->hv.x / TILE_SIZE);
+		cub->x_offset = cub->x_offset * cub->data4.width;
+	}
+	else
+	{
+		cub->x_offset = cub->hv.y / TILE_SIZE - (int)(cub->hv.y / TILE_SIZE);
+		cub->x_offset = cub->x_offset * cub->data4.width;
+	}
 }

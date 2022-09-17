@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CheckTrueMap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izail <izail@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:16:41 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:53 by izail            ###   ########.fr       */
+/*   Updated: 2022/09/18 00:12:12 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_first_line(char **str)
 }
 
 void	check_last_line(char **str)
-{
+{	
 	int	i;
 	int	len;
 
@@ -82,13 +82,13 @@ void	check_walls(char **str)
 
 void	check_true_map(t_cub *cub)
 {
+	cub->map_height = calcule_true_map(cub);
+	init_side(cub);
+	check_objects(cub);
 	check_first_line(cub->map->truemap);
 	check_last_line(cub->map->truemap);
 	check_walls(cub->map->truemap);
-	init_side(cub);
-	check_objects(cub);
 	get_position_player(cub);
-	cub->map_height = calcule_true_map(cub);
 	check_inside_map(cub);
 	ft_mlx(cub);
 }
